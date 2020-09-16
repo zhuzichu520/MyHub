@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="app_primary_color" format="color" /> <!-- topbar -->
+    <attr name="app_content_bg_color" format="color" /> <!-- content-->
+
+    <declare-styleable name="RecyclerView">
+        <attr name="itemBinding" format="reference" />
+        <attr name="items" format="reference" />
+        <attr name="adapter" format="reference" />
+        <attr name="itemIds" format="reference" />
+        <attr name="viewHolder" format="reference" />
+        <attr name="diffConfig" format="reference" />
+    </declare-styleable>
+
+</resources>
