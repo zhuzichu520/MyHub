@@ -5,5 +5,8 @@ rootProject.name = ("MyHub")
 include(
     "app",
     "library-shared",
-    "module-login"
+    "module-login",
+    "module-main",
+    "module-home",
+    "module-me"
 )

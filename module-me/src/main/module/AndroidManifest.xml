@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhuzichu.android.me">
+
+    <application>
+        <activity android:name=".ActivityMe" />
+    </application>
+
+</manifest>

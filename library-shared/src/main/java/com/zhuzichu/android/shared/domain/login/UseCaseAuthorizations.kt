@@ -9,13 +9,12 @@ import io.reactivex.rxjava3.core.Observable
 import rxhttp.RxHttp
 
 /**
- * desc
+ * desc 授权登录
  * author: 朱子楚
  * time: 2020/9/16 1:13 PM
  * since: v 1.0.0
  */
-class UseCaseAuthorizations constructor(
-) : UseCase<ParamAuthor, Observable<BeanAuthor>>() {
+class UseCaseAuthorizations : UseCase<ParamAuthor, Observable<BeanAuthor>>() {
 
     override fun execute(parameters: ParamAuthor): Observable<BeanAuthor> {
         return RxHttp.postJson("/authorizations")
@@ -25,6 +24,5 @@ class UseCaseAuthorizations constructor(
             .asClass(BeanAuthor::class.java)
             .bindToSchedulers()
     }
-
 
 }

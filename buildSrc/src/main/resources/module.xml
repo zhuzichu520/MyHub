@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE modules SYSTEM "module.dtd" >
 <modules>
-    <module name="module-login" application="com.zhuzichu.android.login.ApplicationLogin" app="false"/>
+    <module name="module-login" app="false"
+        application="com.zhuzichu.android.login.ApplicationLogin" />
+    <module name="module-main" app="false"
+        application="com.zhuzichu.android.main.ApplicationMain" />
+    <module name="module-home" app="false"
+        application="com.zhuzichu.android.main.ApplicationHome" />
+    <module name="module-me" app="false" application="com.zhuzichu.android.main.ApplicationMe" />
 </modules>

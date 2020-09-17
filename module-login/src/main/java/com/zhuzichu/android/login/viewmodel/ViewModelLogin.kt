@@ -2,22 +2,16 @@ package com.zhuzichu.android.login.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.hiwitech.android.libs.internal.MainHandler
-import com.hiwitech.android.libs.tool.object2Json
 import com.hiwitech.android.libs.tool.toStringEmpty
 import com.hiwitech.android.mvvm.base.ArgDefault
-import com.hiwitech.android.mvvm.domain.UseCase
 import com.hiwitech.android.mvvm.ext.createCommand
-import com.hiwitech.android.widget.log.lumberjack.L
-import com.hiwitech.android.widget.toast.toast
 import com.rxjava.rxlife.life
-import com.zhuzichu.android.login.entity.ParamterAuthorizations
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.domain.login.UseCaseAuthorizations
 import com.zhuzichu.android.shared.entity.param.ParamAuthor
 import com.zhuzichu.android.shared.ext.autoLoading
-import com.zhuzichu.android.shared.ext.bindToSchedulers
+import com.zhuzichu.android.shared.route.RoutePath
 import okhttp3.Credentials
-import rxhttp.RxHttp
 
 class ViewModelLogin : ViewModelBase<ArgDefault>() {
 
@@ -38,8 +32,10 @@ class ViewModelLogin : ViewModelBase<ArgDefault>() {
             ParamAuthor(basicToken)
         ).autoLoading(this).life(this).subscribe(
             {
-                hideLoading()
-                toast(it.toString())
+                MainHandler.postDelayed {
+                    finish()
+                    navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN)
+                }
             },
             {
                 toast(it.message.toString())

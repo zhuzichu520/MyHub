@@ -14,7 +14,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/library-shared" />
+            <option value="$PROJECT_DIR$/module-home" />
             <option value="$PROJECT_DIR$/module-login" />
+            <option value="$PROJECT_DIR$/module-main" />
+            <option value="$PROJECT_DIR$/module-me" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
