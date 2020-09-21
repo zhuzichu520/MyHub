@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:qmui_top_title="@{@string/login}" />
+            app:qmui_top_title="@{@string/home}" />
 
     </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
 
