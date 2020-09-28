@@ -19,7 +19,6 @@ class UseCaseAuthorizations : UseCase<ParamAuthor, Observable<BeanAuthor>>() {
     override fun execute(parameters: ParamAuthor): Observable<BeanAuthor> {
         return RxHttp.postJson("/authorizations")
             .addHeader("Accept: application/json")
-            .addHeader("Authorization", parameters.basicToken)
             .addAll(object2Json(parameters.authorizations))
             .asClass(BeanAuthor::class.java)
             .bindToSchedulers()

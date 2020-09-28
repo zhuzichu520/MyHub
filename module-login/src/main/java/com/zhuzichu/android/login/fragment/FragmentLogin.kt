@@ -8,6 +8,7 @@ import com.zhuzichu.android.login.R
 import com.zhuzichu.android.login.BR
 import com.zhuzichu.android.login.databinding.FragmentLoginBinding
 import com.zhuzichu.android.login.viewmodel.ViewModelLogin
+import com.zhuzichu.android.shared.storage.AppStorage
 
 @Route(path = RoutePath.Login.FRAGMENT_LOGIN_MAIN)
 class FragmentLogin : FragmentBase<FragmentLoginBinding, ViewModelLogin, ArgDefault>() {
@@ -15,5 +16,12 @@ class FragmentLogin : FragmentBase<FragmentLoginBinding, ViewModelLogin, ArgDefa
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_login
+
+    override fun initView() {
+        super.initView()
+        AppStorage.token?.let {
+            viewModel.startMain()
+        }
+    }
 
 }

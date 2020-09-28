@@ -18,7 +18,6 @@ class UseCaseGetUser : UseCase<Unit, Observable<BeanUser>>() {
     override fun execute(parameters: Unit): Observable<BeanUser> {
         return RxHttp.postJson("/user")
             .addHeader("Accept: application/json")
-            .addHeader("Authorization", AppStorage.token)
             .asClass(BeanUser::class.java)
             .bindToSchedulers()
     }

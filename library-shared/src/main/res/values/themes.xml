@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
-    <style name="MyTheme.QMUI" parent="QMUI.Compat.NoActionBar">
-
+    <style name="MyTheme.QMUI.Base" parent="QMUI.Compat.NoActionBar">
         <!--Material type attributes-->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.MyTheme.Headline2</item>
@@ -18,13 +16,15 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
-
         <!-- 配置app自己的theme -->
         <item name="app_primary_color">@color/color_primary</item>
         <item name="app_content_bg_color">@color/color_background</item>
-
         <!-- topbar -->
         <item name="QMUITopBarStyle">@style/MyTheme.QMUI.TopBar</item>
+    </style>
+
+    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
+    <style name="MyTheme.QMUI" parent="MyTheme.QMUI.Base">
 
     </style>
 

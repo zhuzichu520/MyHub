@@ -8,4 +8,7 @@
     <string name="home">Home</string>
     <string name="me">Me</string>
 
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+
 </resources>

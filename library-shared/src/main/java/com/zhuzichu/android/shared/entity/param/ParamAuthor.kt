@@ -10,7 +10,6 @@ import com.zhuzichu.android.shared.BuildConfig
  * since: v 1.0.0
  */
 data class ParamAuthor(
-    val basicToken: String? = null,
     val authorizations: Authorizations = Authorizations()
 ) {
 

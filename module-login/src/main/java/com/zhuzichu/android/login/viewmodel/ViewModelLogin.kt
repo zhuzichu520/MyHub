@@ -10,6 +10,7 @@ import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.domain.login.UseCaseAuthorizations
 import com.zhuzichu.android.shared.entity.param.ParamAuthor
 import com.zhuzichu.android.shared.ext.autoLoading
+import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.storage.AppStorage
 import okhttp3.Credentials
@@ -29,14 +30,14 @@ class ViewModelLogin : ViewModelBase<ArgDefault>() {
             username.value.toStringEmpty(),
             password.value.toStringEmpty()
         )
+        AppStorage.token = basicToken
         useCaseAuthorizations.execute(
-            ParamAuthor(basicToken)
+            ParamAuthor()
         ).autoLoading(this).life(this).subscribe(
             {
                 AppStorage.token = "token ${it.token}"
                 MainHandler.postDelayed {
-                    finish()
-                    navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN)
+                    startMain()
                 }
             },
             {
@@ -44,6 +45,11 @@ class ViewModelLogin : ViewModelBase<ArgDefault>() {
                 it.printStackTrace()
             }
         )
+    }
+
+
+    fun startMain() {
+        navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN, isPop = true)
     }
 
 }

@@ -9,4 +9,7 @@
     <string name="home">主页</string>
     <string name="me">我的</string>
 
+    <string name="followers">关注者</string>
+    <string name="following">关注中</string>
+
 </resources>
