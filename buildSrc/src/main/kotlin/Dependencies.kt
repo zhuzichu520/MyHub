@@ -63,10 +63,11 @@ object Versions {
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.0.7"
+    const val DEVELOPER = "3.0.8"
 
     const val COIL = "0.13.0"
 
+    const val JSOUP = "1.12.1"
 }
 
 
@@ -193,6 +194,8 @@ object Libs {
     const val QMUI_ARCH = "com.qmuiteam:arch:${Versions.QMUI}"
 
     const val COIL = "io.coil-kt:coil:${Versions.COIL}"
+
+    const val JSOUP = "org.jsoup:jsoup:${Versions.JSOUP}"
 
 }
 

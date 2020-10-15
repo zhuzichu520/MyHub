@@ -14,13 +14,14 @@ import com.zhuzichu.android.main.databinding.FragmentMainBinding
 import com.zhuzichu.android.main.viewmodel.ViewModelMain
 import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentBase
+import com.zhuzichu.android.shared.entity.arg.ArgMain
 import com.zhuzichu.android.shared.ext.toDrawableByResId
 import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.shared.route.RoutePath
 import kotlinx.android.synthetic.main.fragment_main.*
 
 @Route(path = RoutePath.Main.FRAGMENT_MAIN_MAIN)
-class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgDefault>() {
+class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgMain>() {
 
     override fun bindVariableId(): Int = BR.viewModel
 

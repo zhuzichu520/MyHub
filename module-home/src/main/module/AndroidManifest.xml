@@ -2,7 +2,9 @@
     package="com.zhuzichu.android.home">
 
     <application>
-        <activity android:name=".ActivityMain" />
+        <activity android:name=".ActivityHome"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
     </application>
 
 </manifest>

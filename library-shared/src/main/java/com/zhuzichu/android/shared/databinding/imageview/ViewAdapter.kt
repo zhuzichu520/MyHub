@@ -14,14 +14,14 @@ import coil.load
 @BindingAdapter(value = ["url", "crossfade", "placeholder"], requireAll = false)
 fun bindImageView(
     imageView: ImageView,
-    url: String?,
+    url: Any?,
     crossfade: Boolean?,
     @DrawableRes placeholder: Int?
 ) {
     placeholder?.let {
         imageView.setImageResource(placeholder)
     }
-    url?.let {
+    (url as? String)?.let {
         imageView.load(url) {
             crossfade?.let {
                 crossfade(it)
@@ -30,5 +30,8 @@ fun bindImageView(
                 placeholder(it)
             }
         }
+    }
+    (url as? Int)?.let {
+        imageView.setImageResource(it)
     }
 }

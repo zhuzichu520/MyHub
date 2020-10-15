@@ -2,7 +2,11 @@
     package="com.zhuzichu.android.main">
 
     <application>
-        <activity android:name=".ActivityMain" />
+        <activity
+            android:name=".ActivityMain"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
 
 </manifest>

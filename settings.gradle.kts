@@ -8,5 +8,7 @@ include(
     "module-login",
     "module-main",
     "module-home",
-    "module-me"
+    "module-me",
+    "module-setting",
+    "module-web"
 )

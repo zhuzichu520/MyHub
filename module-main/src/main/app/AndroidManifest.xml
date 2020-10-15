@@ -49,7 +49,11 @@
             android:name="design_height_in_dp"
             android:value="768" />
 
-        <activity android:name=".ActivityMain">
+        <activity
+            android:name=".ActivityMain"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

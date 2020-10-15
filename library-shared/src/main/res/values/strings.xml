@@ -1,5 +1,4 @@
 <resources>
-
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -7,8 +6,17 @@
 
     <string name="home">Home</string>
     <string name="me">Me</string>
+    <string name="setting">Setting</string>
+    <string name="about">About</string>
 
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+
+    <string name="github">GitHub</string>
+    <string name="about_copyright">© 2020 ZhuZiChu All rights reserved.</string>
+
+    <string name="empty_desc_fail_title">Loading Failed</string>
+    <string name="empty_desc_fail_desc">Please check whether the network can connect normally</string>
+    <string name="empty_desc_retry">Retry</string>
 
 </resources>

@@ -7,4 +7,8 @@
     <module name="module-home" app="false"
         application="com.zhuzichu.android.main.ApplicationHome" />
     <module name="module-me" app="false" application="com.zhuzichu.android.main.ApplicationMe" />
+    <module name="module-setting" app="false"
+        application="com.zhuzichu.android.main.ApplicationSetting" />
+    <module name="module-web" app="false"
+        application="com.zhuzichu.android.main.ApplicationWeb" />
 </modules>

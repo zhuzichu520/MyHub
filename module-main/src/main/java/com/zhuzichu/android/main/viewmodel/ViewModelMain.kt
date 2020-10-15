@@ -1,10 +1,9 @@
 package com.zhuzichu.android.main.viewmodel
 
-import com.hiwitech.android.mvvm.base.ArgDefault
 import com.zhuzichu.android.shared.base.ViewModelBase
+import com.zhuzichu.android.shared.entity.arg.ArgMain
 
-class ViewModelMain : ViewModelBase<ArgDefault>() {
-
+class ViewModelMain : ViewModelBase<ArgMain>() {
 
 
 }

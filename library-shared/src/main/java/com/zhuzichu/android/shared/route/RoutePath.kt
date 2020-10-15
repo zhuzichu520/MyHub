@@ -20,4 +20,15 @@ object RoutePath {
         const val ACTIVITY_ME_MAIN = "/me/activity/main"
         const val FRAGMENT_ME_MAIN = "/me/fragment/main"
     }
+
+    object Web {
+        const val ACTIVITY_WEB_MAIN = "/web/activity/main"
+        const val FRAGMENT_WEB_MAIN = "/web/fragment/main"
+    }
+
+    object Setting {
+        const val ACTIVITY_SETTING_MAIN = "/setting/activity/main"
+        const val FRAGMENT_SETTING_MAIN = "/setting/fragment/main"
+        const val FRAGMENT_SETTING_ABOUT = "/setting/fragment/about"
+    }
 }

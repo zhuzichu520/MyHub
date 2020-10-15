@@ -8,14 +8,14 @@ import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.domain.login.UseCaseGetUser
 import com.zhuzichu.android.shared.entity.bean.BeanUser
-import com.zhuzichu.android.shared.ext.autoLoading
+import com.zhuzichu.android.shared.entity.enumeration.EnumEmptyStatus
 import com.zhuzichu.android.shared.tools.ParseDateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ViewModelMe : ViewModelBase<ArgDefault>() {
 
     val user = MutableLiveData<BeanUser>()
+
+    val emptyStatus = MutableLiveData(EnumEmptyStatus.LOADING)
 
     val createTime: LiveData<String> = Transformations.map(user) {
         ParseDateFormat.getTimeAgo(it.createdAt).toString()
@@ -31,11 +31,16 @@ class ViewModelMe : ViewModelBase<ArgDefault>() {
 
     private fun loadUser() {
         useCaseGetUser.execute(Unit)
-            .autoLoading(this)
             .life(this)
-            .subscribe {
-                user.value = it
-            }
+            .subscribe(
+                {
+                    user.value = it
+                    emptyStatus.value = EnumEmptyStatus.SUCCESS
+                },
+                {
+                    emptyStatus.value = EnumEmptyStatus.ERROR
+                }
+            )
     }
 
 }

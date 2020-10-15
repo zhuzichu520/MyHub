@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <attr name="app_skin_color_primary" format="color" />
+    <attr name="app_skin_app_skin_color_primary_variant" format="color" />
+    <attr name="app_skin_color_secondary" format="color" />
+    <attr name="app_skin_app_skin_color_secondary_variant" format="color" />
+    <attr name="app_skin_color_background" format="color" />
+    <attr name="app_skin_color_background_item" format="color" />
+    <attr name="app_skin_color_surface" format="color" />
+    <attr name="app_skin_color_error" format="color" />
+    <attr name="app_skin_color_font_primary" format="color" />
+    <attr name="app_skin_color_font_secondary" format="color" />
+    <attr name="app_skin_color_font_tertiary" format="color" />
+    <attr name="app_skin_color_divider" format="color" />
+
+
     <style name="MyTheme.QMUI.Base" parent="QMUI.Compat.NoActionBar">
         <!--Material type attributes-->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
@@ -16,15 +30,52 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
-        <!-- 配置app自己的theme -->
-        <item name="app_primary_color">@color/color_primary</item>
-        <item name="app_content_bg_color">@color/color_background</item>
         <!-- topbar -->
         <item name="QMUITopBarStyle">@style/MyTheme.QMUI.TopBar</item>
     </style>
 
+    <!-- blue skin -->
+
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
     <style name="MyTheme.QMUI" parent="MyTheme.QMUI.Base">
+        <item name="app_skin_color_primary">@color/color_6200ee</item>
+        <item name="app_skin_app_skin_color_primary_variant">@color/color_3700b3</item>
+        <item name="app_skin_color_secondary">@color/color_03dac6</item>
+        <item name="app_skin_app_skin_color_secondary_variant">@color/color_018786</item>
+        <item name="app_skin_color_background">@color/color_f4f5f7</item>
+        <item name="app_skin_color_background_item">@color/color_ffffff</item>
+        <item name="app_skin_color_surface">@color/color_ffffff</item>
+        <item name="app_skin_color_error">@color/color_b00020</item>
+        <item name="app_skin_color_font_primary">@color/color_333333</item>
+        <item name="app_skin_color_font_secondary">@color/color_666666</item>
+        <item name="app_skin_color_font_tertiary">@color/color_999999</item>
+        <item name="app_skin_color_divider">@color/color_dddddd</item>
+
+        <item name="qmui_config_color_blue">?attr/app_skin_color_primary</item>
+
+        <item name="qmui_skin_support_round_btn_border_color">
+            ?attr/app_skin_app_skin_color_primary_variant
+        </item>
+        <item name="qmui_skin_support_round_btn_text_color">@color/color_ffffff</item>
+        <item name="qmui_skin_support_round_btn_bg_color">?attr/app_skin_color_primary</item>
+
+    </style>
+
+    <style name="app_skin_blue" parent="MyTheme.QMUI" />
+
+    <style name="app_skin_dark" parent="MyTheme.QMUI">
+        <item name="app_skin_color_primary">@color/color_6200ee</item>
+        <item name="app_skin_app_skin_color_primary_variant">@color/color_3700b3</item>
+        <item name="app_skin_color_secondary">@color/color_03dac6</item>
+        <item name="app_skin_app_skin_color_secondary_variant">@color/color_018786</item>
+        <item name="app_skin_color_background">@color/color_000000</item>
+        <item name="app_skin_color_background_item">@color/color_121212</item>
+        <item name="app_skin_color_surface">@color/color_121212</item>
+        <item name="app_skin_color_error">@color/color_cf6679</item>
+        <item name="app_skin_color_font_primary">@color/color_f4f5f7</item>
+        <item name="app_skin_color_font_secondary">@color/color_f4f5f7</item>
+        <item name="app_skin_color_font_tertiary">@color/color_f4f5f7</item>
+        <item name="app_skin_color_divider">@color/color_dddddd</item>
 
     </style>
 

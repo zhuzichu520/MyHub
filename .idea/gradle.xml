@@ -18,6 +18,8 @@
             <option value="$PROJECT_DIR$/module-login" />
             <option value="$PROJECT_DIR$/module-main" />
             <option value="$PROJECT_DIR$/module-me" />
+            <option value="$PROJECT_DIR$/module-setting" />
+            <option value="$PROJECT_DIR$/module-web" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

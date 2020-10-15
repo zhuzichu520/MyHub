@@ -119,6 +119,8 @@ dependencies {
     api(Libs.QMUI)
     api(Libs.QMUI_ARCH)
 
+    api(Libs.JSOUP)
+
     api(MyLibs.DEVELOPER_LIBS)
     api(MyLibs.DEVELOPER_MVVM)
     api(MyLibs.DEVELOPER_WIDGET)

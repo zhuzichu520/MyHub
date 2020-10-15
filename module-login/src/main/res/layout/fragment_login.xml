@@ -12,13 +12,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/app_content_bg_color">
+        android:background="?attr/app_skin_color_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="?attr/qmui_topbar_height"
-            android:background="@color/qmui_config_color_white"
             android:fitsSystemWindows="true"
             android:orientation="vertical">
 
@@ -29,7 +28,7 @@
                 android:layout_marginBottom="15dp"
                 android:src="@mipmap/ic_login_logo" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -37,7 +36,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/username"
-                android:textColor="@color/color_font_primary"
+                android:textColor="?attr/app_skin_color_font_primary"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -53,10 +52,10 @@
                 android:paddingBottom="6dp"
                 android:singleLine="true"
                 android:text="@={viewModel.username}"
-                android:textColor="@color/color_font_secondary"
+                android:textColor="?attr/app_skin_color_font_secondary"
                 android:textSize="16sp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -64,7 +63,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/password"
-                android:textColor="@color/color_font_primary"
+                android:textColor="?attr/app_skin_color_font_primary"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -80,7 +79,7 @@
                 android:paddingBottom="6dp"
                 android:singleLine="true"
                 android:text="@={viewModel.password}"
-                android:textColor="@color/color_font_secondary"
+                android:textColor="?attr/app_skin_color_font_secondary"
                 android:textSize="16sp" />
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
@@ -91,6 +90,7 @@
                 android:layout_marginTop="25dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+                app:qmuiAlphaWhenPress="@{true}"
                 android:text="@string/login"
                 android:textAppearance="?attr/textAppearanceButton"
                 app:onClickCommand="@{viewModel.onClickLoginCommand}"
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:qmui_top_title="@{@string/login}" />
+            app:qmuiTopTitle="@{@string/login}" />
 
     </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
 

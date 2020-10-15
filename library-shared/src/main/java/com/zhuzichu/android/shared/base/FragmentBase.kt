@@ -11,6 +11,8 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper
 abstract class FragmentBase<TBinding : ViewDataBinding, TViewModel : BaseViewModel<TArg>, TArg : BaseArg> :
     BaseFragment<TBinding, TViewModel, TArg>() {
 
+    private var bindId = -1
+
     override fun backViewInitOffset(context: Context?, dragDirection: Int, moveEdge: Int): Int {
         return if (moveEdge == SwipeBackLayout.EDGE_TOP || moveEdge == SwipeBackLayout.EDGE_BOTTOM) {
             0

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.zhuzichu.android.home.viewmodel.ItemViewModelRepository" />
+    </data>
+
+    <com.qmuiteam.qmui.layout.QMUIConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="?attr/app_skin_color_background_item"
+        android:foreground="?attr/selectableItemBackground"
+        app:onClickCommand="@{item.onClickItem}"
+        app:qmui_radius="6dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="start"
+            android:lines="1"
+            android:text="@{item.name}"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/app_skin_color_font_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="MultiSnapRecyclerView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="start"
+            android:text="@{item.description}"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Android library for multiple snapping of RecyclerView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/language_icon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:url="@{item.languageIcon}"
+            tools:src="@drawable/ic_circle_kotlin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/language_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{item.language}"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:layout_constraintBottom_toBottomOf="@id/language_icon"
+            app:layout_constraintStart_toEndOf="@id/language_icon"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toTopOf="@id/language_icon"
+            tools:text="Kotlin" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@id/language_name"
+            app:layout_constraintStart_toEndOf="@id/language_name"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toTopOf="@id/language_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/star_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{item.starsCount}"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:layout_constraintBottom_toBottomOf="@id/star_icon"
+            app:layout_constraintStart_toEndOf="@id/star_icon"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toTopOf="@id/star_icon"
+            tools:text="1520" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fork_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_fork"
+            app:layout_constraintBottom_toBottomOf="@id/star_count"
+            app:layout_constraintStart_toEndOf="@id/star_count"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toTopOf="@id/star_count" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fork_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{item.forksCount}"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:layout_constraintBottom_toBottomOf="@id/fork_icon"
+            app:layout_constraintStart_toEndOf="@id/fork_icon"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toTopOf="@id/fork_icon"
+            tools:text="132" />
+
+    </com.qmuiteam.qmui.layout.QMUIConstraintLayout>
+</layout>

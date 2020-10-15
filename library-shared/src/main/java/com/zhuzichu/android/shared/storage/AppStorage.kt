@@ -1,6 +1,7 @@
 package com.zhuzichu.android.shared.storage
 
 import com.tencent.mmkv.MMKV
+import com.zhuzichu.android.shared.skin.SkinManager.Companion.SKIN_BLUE
 
 object AppStorage {
 
@@ -11,5 +12,7 @@ object AppStorage {
     }
 
     var token by StringPreference(prefs, null)
+
+    var skinIndex by IntPreference(prefs, SKIN_BLUE)
 
 }
