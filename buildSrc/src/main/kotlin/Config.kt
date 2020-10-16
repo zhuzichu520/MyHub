@@ -108,10 +108,6 @@ object Config {
         )
     }
 
-    private val moduleProperties by lazy {
-        loadProperties("module-config.properties")
-    }
-
     private val configProperties by lazy {
         val properties = defaultConfigProperties
         flavorConfigProperties.mapKeys {
