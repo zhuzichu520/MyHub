@@ -19,4 +19,12 @@
     <string name="empty_desc_fail_desc">Please check whether the network can connect normally</string>
     <string name="empty_desc_retry">Retry</string>
 
+    <string name="settings_theme_title">Choose theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_battery">Set by Battery Saver</string>
+    <string name="night_mode">Night mode</string>
+
+
 </resources>

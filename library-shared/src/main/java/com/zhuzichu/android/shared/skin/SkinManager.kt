@@ -2,6 +2,7 @@ package com.zhuzichu.android.shared.skin
 
 import android.content.Context
 import android.content.res.Configuration
+import androidx.appcompat.app.AppCompatDelegate.*
 import com.qmuiteam.qmui.skin.QMUISkinManager
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.global.AppGlobal.context
@@ -29,27 +30,37 @@ class SkinManager {
                 SKIN_DARK,
                 R.style.app_skin_dark
             )
-
-            val isDarkMode =
-                (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-            val storeSkinIndex: Int = AppStorage.skinIndex
-            if (isDarkMode && storeSkinIndex != SKIN_DARK) {
-                skinManager.changeSkin(SKIN_DARK)
-            } else if (!isDarkMode && storeSkinIndex == SKIN_DARK) {
-                skinManager.changeSkin(SKIN_BLUE)
-            } else {
-                skinManager.changeSkin(storeSkinIndex)
-            }
+            applyConfigurationChanged(context.resources.configuration)
         }
 
 
-        fun changeSkin(index: Int) {
+         fun changeSkin(index: Int) {
             QMUISkinManager.defaultInstance(context).changeSkin(index)
-            AppStorage.skinIndex = index
         }
 
-        fun getCurrentSkin(): Int {
+        private fun getCurrentSkin(): Int {
             return QMUISkinManager.defaultInstance(context).currentSkin
+        }
+
+        fun applyConfigurationChanged(newConfig: Configuration) {
+            when (AppStorage.uiMode) {
+                MODE_NIGHT_FOLLOW_SYSTEM -> {
+                    //系统默认
+                    if (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
+                        changeSkin(SKIN_DARK)
+                    } else if (getCurrentSkin() == SKIN_DARK) {
+                        changeSkin(SKIN_BLUE)
+                    }
+                }
+                MODE_NIGHT_NO -> {
+                    //白天模式
+                    changeSkin(SKIN_BLUE)
+                }
+                MODE_NIGHT_YES -> {
+                    //夜间模式
+                    changeSkin(SKIN_DARK)
+                }
+            }
         }
 
     }

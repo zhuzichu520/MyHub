@@ -13,8 +13,5 @@ import kotlinx.android.parcel.Parcelize
 class ArgWeb(
     val url: String,
     val title: String? = null,
-    val isReadme: Boolean = false,
-    val login: String? = null,
-    val name: String? = null,
     val needDispatchSafeAreaInset: Boolean? = null
 ) : BaseArg()

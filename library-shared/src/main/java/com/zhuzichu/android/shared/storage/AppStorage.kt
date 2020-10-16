@@ -1,5 +1,6 @@
 package com.zhuzichu.android.shared.storage
 
+import androidx.appcompat.app.AppCompatDelegate
 import com.tencent.mmkv.MMKV
 import com.zhuzichu.android.shared.skin.SkinManager.Companion.SKIN_BLUE
 
@@ -13,6 +14,6 @@ object AppStorage {
 
     var token by StringPreference(prefs, null)
 
-    var skinIndex by IntPreference(prefs, SKIN_BLUE)
+    var uiMode by IntPreference(prefs, defaultValue = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
 }

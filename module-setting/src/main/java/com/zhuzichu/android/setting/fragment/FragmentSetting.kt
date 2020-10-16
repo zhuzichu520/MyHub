@@ -15,6 +15,7 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgMain
 import com.zhuzichu.android.shared.entity.enumeration.EnumMainType
 import com.zhuzichu.android.shared.route.RoutePath
+import com.zhuzichu.android.shared.skin.SkinManager
 import kotlinx.android.synthetic.main.fragment_setting.*
 
 @Route(path = RoutePath.Setting.FRAGMENT_SETTING_MAIN)
@@ -30,10 +31,19 @@ class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, A
         initTopBar()
         QMUIGroupListView.newSection(context)
             .setTitle(String())
-            .addItemView(setting_list.createItemView(resources.getString(R.string.about)).apply {
-                accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
-            }) {
+            .addItemView(
+                setting_list.createItemView(resources.getString(R.string.about))
+                    .apply {
+                        accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
+                    }) {
                 navigate(RoutePath.Setting.FRAGMENT_SETTING_ABOUT)
+            }
+            .addItemView(
+                setting_list.createItemView(resources.getString(R.string.settings_theme_title))
+                    .apply {
+                        accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
+                    }) {
+                navigate(RoutePath.Setting.FRAGMENT_SETTING_THEME)
             }
             .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(context, 16), 0)
             .addTo(setting_list)
@@ -54,7 +64,8 @@ class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, A
     override fun onClick(view: View) {
         when (view) {
             logout -> {
-                navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN, ArgMain(EnumMainType.LOGOUT))
+                SkinManager.changeSkin(SkinManager.SKIN_DARK)
+//                navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN, ArgMain(EnumMainType.LOGOUT))
             }
             else -> {
             }

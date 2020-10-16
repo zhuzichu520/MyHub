@@ -10,5 +10,6 @@ include(
     "module-home",
     "module-me",
     "module-setting",
-    "module-web"
+    "module-web",
+    "module-repository"
 )

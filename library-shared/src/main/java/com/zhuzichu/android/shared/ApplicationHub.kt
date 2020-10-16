@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.multidex.MultiDex
 import coil.ImageLoader
 import coil.ImageLoaderFactory
@@ -17,6 +19,7 @@ import com.zhuzichu.android.shared.global.CacheGlobal
 import com.zhuzichu.android.shared.rxhttp.ResponseHeaderInterceptor
 import com.zhuzichu.android.shared.rxhttp.RxHttpManager
 import com.zhuzichu.android.shared.skin.SkinManager
+import com.zhuzichu.android.shared.storage.AppStorage
 import jonathanfinerty.once.Once
 import okhttp3.Cache
 import okhttp3.Dispatcher
@@ -69,11 +72,6 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        if (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
-            SkinManager.changeSkin(SkinManager.SKIN_DARK)
-        } else if (SkinManager.getCurrentSkin() == SkinManager.SKIN_DARK) {
-            SkinManager.changeSkin(SkinManager.SKIN_BLUE)
-        }
+//        SkinManager.applyConfigurationChanged(newConfig)
     }
-
 }

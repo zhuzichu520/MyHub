@@ -30,5 +30,11 @@ object RoutePath {
         const val ACTIVITY_SETTING_MAIN = "/setting/activity/main"
         const val FRAGMENT_SETTING_MAIN = "/setting/fragment/main"
         const val FRAGMENT_SETTING_ABOUT = "/setting/fragment/about"
+        const val FRAGMENT_SETTING_THEME = "/setting/fragment/theme"
+    }
+
+    object Repository {
+        const val ACTIVITY_REPOSITORY_MAIN = "/repository/activity/main"
+        const val FRAGMENT_REPOSITORY_MAIN = "/repository/fragment/main"
     }
 }

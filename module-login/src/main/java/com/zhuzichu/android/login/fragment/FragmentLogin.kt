@@ -1,5 +1,6 @@
 package com.zhuzichu.android.login.fragment
 
+import android.content.res.Configuration
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.mvvm.base.ArgDefault
 import com.zhuzichu.android.shared.base.FragmentBase
@@ -22,6 +23,11 @@ class FragmentLogin : FragmentBase<FragmentLoginBinding, ViewModelLogin, ArgDefa
         AppStorage.token?.let {
             viewModel.startMain()
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
     }
 
 }

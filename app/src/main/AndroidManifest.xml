@@ -39,6 +39,7 @@
         android:roundIcon="${ic_launcher_round_new}"
         android:supportsRtl="true"
         android:theme="@style/MyTheme.QMUI"
+        tools:targetApi="n"
         android:usesCleartextTraffic="true"
         tools:replace="android:label,android:allowBackup">
 
@@ -52,6 +53,18 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="768" />
+
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true"/>
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.34"/>
+
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape"/>
 
         <activity
             android:name=".ActivityMain"

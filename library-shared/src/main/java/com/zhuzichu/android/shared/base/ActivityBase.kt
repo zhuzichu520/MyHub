@@ -9,8 +9,6 @@ abstract class ActivityBase : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val skinManager = QMUISkinManager.defaultInstance(this)
-        setSkinManager(skinManager)
         QMUIStatusBarHelper.setStatusBarLightMode(this)
     }
 

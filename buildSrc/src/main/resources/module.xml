@@ -5,10 +5,12 @@
     <module name="module-main" app="false"
         application="com.zhuzichu.android.main.ApplicationMain" />
     <module name="module-home" app="false"
-        application="com.zhuzichu.android.main.ApplicationHome" />
-    <module name="module-me" app="false" application="com.zhuzichu.android.main.ApplicationMe" />
+        application="com.zhuzichu.android.home.ApplicationHome" />
+    <module name="module-me" app="false" application="com.zhuzichu.android.me.ApplicationMe" />
     <module name="module-setting" app="false"
-        application="com.zhuzichu.android.main.ApplicationSetting" />
+        application="com.zhuzichu.android.setting.ApplicationSetting" />
     <module name="module-web" app="false"
-        application="com.zhuzichu.android.main.ApplicationWeb" />
+        application="com.zhuzichu.android.web.ApplicationWeb" />
+    <module name="module-repository" app="false"
+        application="com.zhuzichu.android.repository.ApplicationRepository" />
 </modules>

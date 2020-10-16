@@ -8,21 +8,31 @@
             type="com.zhuzichu.android.setting.viewmodel.ViewModelSettingAbout" />
     </data>
 
-    <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2 xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/app_skin_color_background">
 
-        <LinearLayout
+        <com.qmuiteam.qmui.widget.QMUITopBarLayout
+            android:id="@+id/topbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/qmui_topbar_height"
-            android:background="@color/qmui_config_color_white"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
+            app:qmuiTopTitle="@{@string/about}" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/qmui_config_color_white"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topbar"
+            tools:layout_marginTop="?attr/qmui_topbar_height">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/logo"
@@ -74,13 +84,6 @@
 
         </LinearLayout>
 
-        <com.qmuiteam.qmui.widget.QMUITopBarLayout
-            android:id="@+id/topbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:qmuiTopTitle="@{@string/about}" />
-
-    </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+    </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2>
 
 </layout>

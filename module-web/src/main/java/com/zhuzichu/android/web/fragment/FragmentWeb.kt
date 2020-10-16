@@ -10,13 +10,11 @@ import android.os.Message
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
-import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.ZoomButtonsController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.libs.tool.hideView
 import com.hiwitech.android.libs.tool.showView
-import com.qmuiteam.qmui.util.QMUIResHelper
 import com.qmuiteam.qmui.widget.webview.QMUIWebView
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
@@ -30,7 +28,7 @@ import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.web.BR
 import com.zhuzichu.android.web.R
 import com.zhuzichu.android.web.databinding.FragmentWebBinding
-import com.zhuzichu.android.web.view.XWebView
+import com.zhuzichu.android.shared.view.XWebView
 import com.zhuzichu.android.web.viewmodel.ViewModelWeb
 import kotlinx.android.synthetic.main.fragment_web.*
 import java.lang.reflect.Field
@@ -89,41 +87,7 @@ class FragmentWeb : FragmentBase<FragmentWebBinding, ViewModelWeb, ArgWeb>() {
         webView.requestFocus(View.FOCUS_DOWN)
         setZoomControlGone(webView)
         configWebView(webview_container, webView)
-        if (arg.isReadme) {
-            loadReadMe()
-        } else {
-            webView.loadUrl(arg.url)
-        }
-    }
-
-    private fun loadReadMe() {
-        useCaseGetReadme.execute(ParamGetReadme(arg.login.toString(), arg.name.toString()))
-            .autoLoading(viewModel)
-            .life(viewModel)
-            .subscribe {
-                val html =
-                    """
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                    <title>${arg.title}</title>
-                    <style></style>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <link rel="stylesheet" type="text/css" href="file:///android_asset/md/readme.css">
-                    </head>
-                    <body>
-                    $it
-                    </html>
-                    """
-                webView.loadDataWithBaseURL(
-                    "file:///android_asset/md/",
-                    html,
-                    "text/html",
-                    "UTF-8",
-                    null
-                )//这种写法可以正确解码
-            }
+        webView.loadUrl(arg.url)
     }
 
     private fun getWebViewChromeClient(): WebChromeClient {
@@ -153,7 +117,6 @@ class FragmentWeb : FragmentBase<FragmentWebBinding, ViewModelWeb, ArgWeb>() {
     ) {
 
     }
-
 
     @Suppress("DEPRECATION")
     private fun setZoomControlGone(webView: WebView) {

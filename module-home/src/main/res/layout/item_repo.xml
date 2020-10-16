@@ -14,12 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         android:background="?attr/app_skin_color_background_item"
         android:foreground="?attr/selectableItemBackground"
         app:onClickCommand="@{item.onClickItem}"
-        app:qmui_radius="6dp">
+        app:qmui_radius="6dp"
+        app:qmui_shadowAlpha="0.75"
+        app:qmui_shadowElevation="2dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"

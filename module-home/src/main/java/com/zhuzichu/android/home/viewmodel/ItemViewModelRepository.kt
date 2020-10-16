@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hiwitech.android.mvvm.base.BaseItemViewModel
 import com.hiwitech.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.home.R
+import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
 import com.zhuzichu.android.shared.entity.bean.BeanRepository
 import com.zhuzichu.android.shared.route.RoutePath
@@ -31,13 +32,10 @@ class ItemViewModelRepository(
 
     val onClickItem = BindingCommand<Any>({
         navigate(
-            RoutePath.Web.ACTIVITY_WEB_MAIN,
-            ArgWeb(
-                bean.htmlUrl.toString(),
-                isReadme = true,
+            RoutePath.Repository.ACTIVITY_REPOSITORY_MAIN,
+            ArgRepository(
                 login = bean.owner?.login,
-                name = bean.name,
-                title = bean.name
+                name = bean.name
             )
         )
     })

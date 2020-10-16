@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:qmui_action_view_init_offset="0dp"
-                app:qmui_can_over_pull="false"
+                app:qmui_can_over_pull="true"
                 app:qmui_need_receive_fling_from_target_view="true"
                 app:qmui_pull_edge="bottom"
                 app:qmui_pull_rate="0.45"
