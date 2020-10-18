@@ -11,7 +11,7 @@ abstract class ActivityBase : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val skinManager = QMUISkinManager.defaultInstance(this)
+        val skinManager = QMUISkinManager .defaultInstance(this)
         setSkinManager(skinManager)
         SkinManager.onSkinChangeListener.observe(this) {
             if (it == SkinManager.SKIN_DARK) {
