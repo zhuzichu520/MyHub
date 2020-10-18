@@ -63,7 +63,7 @@ object Versions {
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.0.8"
+    const val DEVELOPER = "3.0.10"
 
     const val COIL = "0.13.0"
 
@@ -75,7 +75,7 @@ object Versions {
  * 插件版本
  */
 object BuildPluginsVersion {
-    const val AGP = "4.0.1"
+    const val AGP = "4.2.0-alpha13"
     const val DETEKT = "1.7.4"
     const val KOTLIN = "1.4.10"
     const val KTLINT = "9.2.1"

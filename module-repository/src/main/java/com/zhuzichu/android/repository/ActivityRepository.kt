@@ -1,5 +1,6 @@
 package com.zhuzichu.android.repository
 
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhuzichu.android.shared.base.ActivityBase
 import com.zhuzichu.android.shared.route.RoutePath
@@ -12,5 +13,11 @@ import com.zhuzichu.android.shared.route.RoutePath
  */
 @Route(path = RoutePath.Repository.ACTIVITY_REPOSITORY_MAIN)
 class ActivityRepository : ActivityBase() {
+
     override fun getRoute(): String = RoutePath.Repository.FRAGMENT_REPOSITORY_MAIN
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
 }

@@ -94,8 +94,9 @@ class InitModule(private val project: Project) {
                 (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class.java)
             kotlinJvmOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
-            @Suppress("UnstableApiUsage")
-            buildFeatures.dataBinding = true
+            dataBinding {
+                isEnabled = true
+            }
 
             val androidExtensionsExtension =
                 project.extensions.getByType(AndroidExtensionsExtension::class.java)
@@ -138,8 +139,9 @@ class InitModule(private val project: Project) {
                 (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class.java)
             kotlinJvmOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
-            @Suppress("UnstableApiUsage")
-            buildFeatures.dataBinding = true
+            dataBinding {
+                isEnabled = true
+            }
 
             val androidExtensionsExtension =
                 project.extensions.getByType(AndroidExtensionsExtension::class.java)
@@ -157,7 +159,7 @@ class InitModule(private val project: Project) {
      * 是否是主Module
      */
     private fun isMainModule(): Boolean {
-        return  Config.isAppModule(project.name)
+        return Config.isAppModule(project.name)
     }
 
 }

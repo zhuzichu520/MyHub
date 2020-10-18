@@ -4,13 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.util.DebugLogger
 import com.alibaba.android.arouter.launcher.ARouter
-import com.hiwitech.android.libs.internal.MainHandler
 import com.hiwitech.android.mvvm.Mvvm
 import com.hiwitech.android.widget.crash.CrashConfig
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
@@ -29,7 +27,6 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         AppGlobal.init(this)
         Once.initialise(this)
         RxHttpManager(this)
@@ -72,8 +69,6 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        MainHandler.postDelayed {
-            SkinManager.applyConfigurationChanged(newConfig)
-        }
+//        SkinManager.applyConfigurationChanged(newConfig)
     }
 }

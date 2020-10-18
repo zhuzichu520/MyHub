@@ -17,8 +17,8 @@ import com.zhuzichu.android.shared.storage.AppStorage
  * since: v 1.0.0
  */
 class SkinManager {
-    companion object {
 
+    companion object {
 
         const val SKIN_BLUE = 1
         const val SKIN_DARK = 2
@@ -58,7 +58,7 @@ class SkinManager {
                     //系统默认
                     if (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
                         changeSkin(SKIN_DARK)
-                    } else if (getCurrentSkin() == SKIN_DARK) {
+                    } else {
                         changeSkin(SKIN_BLUE)
                     }
                 }
