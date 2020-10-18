@@ -36,7 +36,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="${ic_launcher_round_new}"
         android:supportsRtl="true"
-        android:theme="@style/MyTheme.QMUI"
+        android:theme="@style/MyTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="n">
 

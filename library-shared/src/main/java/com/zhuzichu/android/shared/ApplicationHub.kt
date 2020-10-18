@@ -69,6 +69,7 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-//        SkinManager.applyConfigurationChanged(newConfig)
+        SkinManager.applyConfigurationChanged(newConfig)
     }
+
 }

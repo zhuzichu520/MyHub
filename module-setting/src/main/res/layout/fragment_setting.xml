@@ -35,9 +35,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="?attr/app_skin_color_background_item"
-                    app:qmui_skin_background="?attr/app_skin_color_background_item"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:qmui_skin_background="?attr/app_skin_color_background">
 
                     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                         android:id="@+id/logout"
