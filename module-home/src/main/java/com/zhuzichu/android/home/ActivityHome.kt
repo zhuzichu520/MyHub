@@ -12,5 +12,7 @@ import com.zhuzichu.android.shared.route.RoutePath
  */
 @Route(path = RoutePath.Home.ACTIVITY_HOME_MAIN)
 class ActivityHome : ActivityBase() {
+
     override fun getRoute(): String = RoutePath.Home.FRAGMENT_HOME_MAIN
+
 }

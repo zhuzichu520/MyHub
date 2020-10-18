@@ -15,7 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/app_skin_color_background">
+        app:qmui_skin_background="?attr/app_skin_color_background">
 
         <com.qmuiteam.qmui.widget.QMUITopBarLayout
             android:id="@+id/topbar"
@@ -28,7 +28,6 @@
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/qmui_config_color_white"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +60,7 @@
                 android:layout_marginTop="25dp"
                 android:text="@{viewModel.user.name}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="?attr/app_skin_color_font_primary"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
                 app:layout_constraintStart_toEndOf="@+id/avatar"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="name" />
@@ -73,7 +72,7 @@
                 android:layout_marginStart="15dp"
                 android:text="@{viewModel.user.login}"
                 android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?attr/app_skin_color_font_secondary"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
                 app:layout_constraintStart_toEndOf="@+id/avatar"
                 app:layout_constraintTop_toBottomOf="@+id/name"
                 tools:text="login" />
@@ -99,14 +98,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/following"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="?attr/app_skin_color_font_primary" />
+                        app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.user.following.toString()}"
                         android:textAppearance="?attr/textAppearanceCaption"
-                        android:textColor="?attr/app_skin_color_font_secondary" />
+                        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
 
                 </LinearLayout>
 
@@ -128,14 +127,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/followers"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="?attr/app_skin_color_font_primary" />
+                        app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.user.followers.toString()}"
                         android:textAppearance="?attr/textAppearanceCaption"
-                        android:textColor="?attr/app_skin_color_font_secondary" />
+                        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
 
                 </LinearLayout>
 
@@ -156,7 +155,7 @@
                 android:padding="15dp"
                 android:text="@{viewModel.createTime}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="?attr/app_skin_color_font_primary"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
                 app:layout_constraintTop_toBottomOf="@+id/follow"
                 tools:text="2019年10月16" />
 
@@ -172,7 +171,7 @@
         <com.qmuiteam.qmui.widget.QMUIEmptyView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="?attr/app_skin_color_background"
+            app:qmui_skin_background="?attr/app_skin_color_background"
             app:emptyStatus="@{viewModel.emptyStatus}"
             app:layout_constraintBottom_toBottomOf="@id/content"
             app:layout_constraintEnd_toEndOf="@id/content"

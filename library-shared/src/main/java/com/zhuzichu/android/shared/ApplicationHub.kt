@@ -5,12 +5,12 @@ import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.multidex.MultiDex
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import coil.util.DebugLogger
 import com.alibaba.android.arouter.launcher.ARouter
+import com.hiwitech.android.libs.internal.MainHandler
 import com.hiwitech.android.mvvm.Mvvm
 import com.hiwitech.android.widget.crash.CrashConfig
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
@@ -19,7 +19,6 @@ import com.zhuzichu.android.shared.global.CacheGlobal
 import com.zhuzichu.android.shared.rxhttp.ResponseHeaderInterceptor
 import com.zhuzichu.android.shared.rxhttp.RxHttpManager
 import com.zhuzichu.android.shared.skin.SkinManager
-import com.zhuzichu.android.shared.storage.AppStorage
 import jonathanfinerty.once.Once
 import okhttp3.Cache
 import okhttp3.Dispatcher
@@ -30,6 +29,7 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         AppGlobal.init(this)
         Once.initialise(this)
         RxHttpManager(this)
@@ -72,6 +72,8 @@ class ApplicationHub : Application(), ImageLoaderFactory {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-//        SkinManager.applyConfigurationChanged(newConfig)
+        MainHandler.postDelayed {
+            SkinManager.applyConfigurationChanged(newConfig)
+        }
     }
 }

@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/app_skin_color_background">
+        app:qmui_skin_background="?attr/app_skin_color_background">
 
         <com.qmuiteam.qmui.widget.QMUITopBarLayout
             android:id="@+id/topbar"
@@ -68,7 +68,7 @@
         <com.qmuiteam.qmui.widget.QMUIEmptyView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="?attr/app_skin_color_background"
+            app:qmui_skin_background="?attr/app_skin_color_background"
             app:emptyErrorCommand="@{viewModel.emptyErrorCommand}"
             app:emptyStatus="@{viewModel.emptyStatus}"
             app:layout_constraintBottom_toBottomOf="@id/content"

@@ -52,12 +52,20 @@
         <item name="app_skin_color_divider">@color/color_dddddd</item>
 
         <item name="qmui_config_color_blue">?attr/app_skin_color_primary</item>
-
-        <item name="qmui_skin_support_round_btn_border_color">
-            ?attr/app_skin_app_skin_color_primary_variant
-        </item>
+        <item name="qmui_skin_support_round_btn_border_color">?attr/app_skin_app_skin_color_primary_variant</item>
         <item name="qmui_skin_support_round_btn_text_color">@color/color_ffffff</item>
         <item name="qmui_skin_support_round_btn_bg_color">?attr/app_skin_color_primary</item>
+        <item name="qmui_skin_support_topbar_bg">?attr/app_skin_color_surface</item>
+        <item name="qmui_skin_support_topbar_separator_color">?attr/qmui_skin_support_color_separator</item>
+        <item name="qmui_skin_support_topbar_title_color">?attr/app_skin_color_font_primary</item>
+        <item name="qmui_skin_support_topbar_subtitle_color">?attr/app_skin_color_font_secondary</item>
+        <item name="qmui_skin_support_topbar_text_btn_color_state_list">?attr/app_skin_color_font_tertiary</item>
+        <item name="qmui_skin_support_topbar_image_tint_color">?attr/app_skin_color_font_primary</item>
+
+        <item name="qmui_skin_support_tab_bg">?attr/app_skin_color_surface</item>
+        <item name="qmui_skin_support_tab_separator_color">?attr/qmui_skin_support_color_separator</item>
+        <item name="qmui_skin_support_tab_normal_color">?attr/qmui_config_color_gray_6</item>
+        <item name="qmui_skin_support_tab_selected_color">?attr/app_skin_color_primary</item>
 
     </style>
 
@@ -76,6 +84,15 @@
         <item name="app_skin_color_font_secondary">@color/color_f4f5f7</item>
         <item name="app_skin_color_font_tertiary">@color/color_f4f5f7</item>
         <item name="app_skin_color_divider">@color/color_dddddd</item>
+
+        <item name="qmui_skin_support_tab_normal_color">?attr/qmui_config_color_gray_3</item>
+        <item name="qmui_skin_support_tab_selected_color">@color/qmui_config_color_white</item>
+        <item name="qmui_skin_support_tab_sign_count_view_text_color">@color/qmui_config_color_75_white</item>
+        <item name="qmui_skin_support_tab_sign_count_view_bg_color">#80FF303A</item>
+
+        <item name="qmui_skin_support_s_list_item_bg_1">@drawable/app_skin_list_item_bg_dark_1</item>
+        <item name="qmui_skin_support_s_list_item_bg_2">@drawable/app_skin_list_item_bg_dark_2</item>
+
 
     </style>
 

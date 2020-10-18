@@ -64,8 +64,7 @@ class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, A
     override fun onClick(view: View) {
         when (view) {
             logout -> {
-                SkinManager.changeSkin(SkinManager.SKIN_DARK)
-//                navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN, ArgMain(EnumMainType.LOGOUT))
+                navigate(RoutePath.Main.ACTIVITY_MAIN_MAIN, ArgMain(EnumMainType.LOGOUT))
             }
             else -> {
             }

@@ -3,7 +3,9 @@ package com.zhuzichu.android.shared.skin
 import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate.*
+import androidx.lifecycle.MutableLiveData
 import com.qmuiteam.qmui.skin.QMUISkinManager
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.global.AppGlobal.context
 import com.zhuzichu.android.shared.storage.AppStorage
@@ -17,11 +19,19 @@ import com.zhuzichu.android.shared.storage.AppStorage
 class SkinManager {
     companion object {
 
+
         const val SKIN_BLUE = 1
         const val SKIN_DARK = 2
 
+        val onSkinChangeListener = MutableLiveData<Int>()
+
+        private val mOnSkinChangeListener = QMUISkinManager.OnSkinChangeListener { _, _, newSkin ->
+            onSkinChangeListener.value = newSkin
+        }
+
         fun install(context: Context) {
             val skinManager = QMUISkinManager.defaultInstance(context)
+            skinManager.addSkinChangeListener(mOnSkinChangeListener)
             skinManager.addSkin(
                 SKIN_BLUE,
                 R.style.app_skin_blue
@@ -34,7 +44,7 @@ class SkinManager {
         }
 
 
-         fun changeSkin(index: Int) {
+        fun changeSkin(index: Int) {
             QMUISkinManager.defaultInstance(context).changeSkin(index)
         }
 
@@ -62,6 +72,6 @@ class SkinManager {
                 }
             }
         }
-
     }
+
 }
