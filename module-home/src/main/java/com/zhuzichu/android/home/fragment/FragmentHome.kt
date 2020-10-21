@@ -21,9 +21,17 @@ class FragmentHome : FragmentBase<FragmentHomeBinding, ViewModelHome, ArgDefault
 
     override fun initView() {
         super.initView()
+        initTopBar()
         val scrollBar = QMUIRVDraggableScrollBar(0, 0, 0)
         scrollBar.isEnableScrollBarFadeInOut = true
         scrollBar.attachToRecyclerView(recycler)
+    }
+
+    private fun initTopBar() {
+        topbar.addRightImageButton(R.drawable.ic_topbar_search, R.id.topbar_right_search_button)
+            .setOnClickListener {
+                navigate(RoutePath.Search.ACTIVITY_SEARCH_MAIN)
+            }
     }
 
     override fun initData() {

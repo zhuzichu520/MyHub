@@ -37,4 +37,10 @@ object RoutePath {
         const val ACTIVITY_REPOSITORY_MAIN = "/repository/activity/main"
         const val FRAGMENT_REPOSITORY_MAIN = "/repository/fragment/main"
     }
+
+    object Search {
+        const val ACTIVITY_SEARCH_MAIN = "/search/activity/main"
+        const val FRAGMENT_SEARCH_MAIN = "/search/fragment/main"
+    }
+
 }

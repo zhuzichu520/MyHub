@@ -13,4 +13,6 @@
         application="com.zhuzichu.android.web.ApplicationWeb" />
     <module name="module-repository" app="false"
         application="com.zhuzichu.android.repository.ApplicationRepository" />
+    <module name="module-search" app="false"
+        application="com.zhuzichu.android.search.ApplicationSearch" />
 </modules>
