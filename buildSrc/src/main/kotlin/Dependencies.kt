@@ -20,6 +20,7 @@ object Versions {
     const val EXIFINTERFACE = "1.2.0"
     const val RECYCLERVIEW = "1.1.0"
     const val CORE_KTX = "1.3.1"
+    const val FRAGMENT="1.3.0-alpha05"
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
@@ -102,6 +103,8 @@ object ClassPaths {
 object SupportLibs {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val ANDROIDX_FRAGMENT="androidx.fragment:fragment:${Versions.FRAGMENT}"
+    const val ANDROIDX_FRAGMENT_KTX="androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
 
     //exifinterface
     const val ANDROIDX_EXIFINTERFACE =

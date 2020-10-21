@@ -6,6 +6,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.webkit.WebSettings
 import com.hiwitech.android.libs.tool.toStringEmpty
+import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopWebView
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.util.QMUIPackageHelper
 import com.qmuiteam.qmui.util.QMUIResHelper
@@ -20,7 +21,7 @@ import com.zhuzichu.android.shared.R
  */
 class XWebView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : QMUIWebView(context, attrs, defStyleAttr) {
+) : QMUIContinuousNestedTopWebView(context, attrs, defStyleAttr) {
 
     init {
         initWebSetting()

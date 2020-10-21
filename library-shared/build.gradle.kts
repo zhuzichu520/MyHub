@@ -76,6 +76,8 @@ dependencies {
     api(SupportLibs.ANDROIDX_RECYCLERVIEW)
     api(SupportLibs.ANDROIDX_EXIFINTERFACE)
     api(SupportLibs.ANDROIDX_SWIPEREFRESHLAYOUT)
+    api(SupportLibs.ANDROIDX_FRAGMENT)
+    api(SupportLibs.ANDROIDX_FRAGMENT_KTX)
 
 
     kapt(Kapts.RXHTTP_COMPILER)

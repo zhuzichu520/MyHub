@@ -28,4 +28,15 @@
 
     <string name="night_mode">夜间模式</string>
 
+    <string name="repository_info">信息</string>
+    <string name="repository_files">文件</string>
+    <string name="repository_commits">提交</string>
+    <string name="repository_activity">活动</string>
+    <string name="repository_language_size">语言 %s，大小 %s</string>
+    <string name="unknown">未知</string>
+    <string name="issues">问题</string>
+    <string name="stargazers">星标</string>
+    <string name="watchers">版本库分支</string>
+    <string name="forks">关注者</string>
+
 </resources>

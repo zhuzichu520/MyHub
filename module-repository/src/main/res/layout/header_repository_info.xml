@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="?attr/app_skin_color_font_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+        tools:text="hahah/Android" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="?attr/app_skin_color_font_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/full_name"
+        app:layout_constraintTop_toBottomOf="@+id/full_name"
+        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
+        tools:text="GitHub上最火的Android开源项目,所有开源项目都有详细资料和配套视频" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Language Unknown，Size 36.00 KB"
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:textColor="?attr/app_skin_color_font_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+    <LinearLayout
+        android:id="@+id/layout_issues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/layout_stargazers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/issues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/app_skin_color_font_primary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+            tools:text="37" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/issues"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_stargazers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/layout_forks"
+        app:layout_constraintStart_toEndOf="@+id/layout_issues"
+        app:layout_constraintTop_toTopOf="@+id/layout_issues">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/stargazers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/app_skin_color_font_primary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+            tools:text="37" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stargazers"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_forks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/layout_watchers"
+        app:layout_constraintStart_toEndOf="@+id/layout_stargazers"
+        app:layout_constraintTop_toTopOf="@+id/layout_issues">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/forks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/app_skin_color_font_primary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+            tools:text="37" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forks"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_watchers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_forks"
+        app:layout_constraintTop_toTopOf="@+id/layout_issues">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/watchers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/app_skin_color_font_primary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+            tools:text="37" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/watchers"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?attr/app_skin_color_font_secondary"
+            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,10 +33,7 @@ class ItemViewModelRepository(
     val onClickItem = BindingCommand<Any>({
         navigate(
             RoutePath.Repository.ACTIVITY_REPOSITORY_MAIN,
-            ArgRepository(
-                login = bean.owner?.login,
-                name = bean.name
-            )
+            ArgRepository(bean)
         )
     })
 

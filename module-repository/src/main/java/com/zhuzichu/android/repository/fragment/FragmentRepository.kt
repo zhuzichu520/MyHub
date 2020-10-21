@@ -1,61 +1,68 @@
 package com.zhuzichu.android.repository.fragment
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.graphics.Bitmap
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
-import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.widget.ProgressBar
-import android.widget.ZoomButtonsController
+import androidx.fragment.app.activityViewModels
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.qmuiteam.qmui.widget.webview.QMUIWebView
-import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
-import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
-import com.rxjava.rxlife.life
-import com.zhuzichu.android.repository.R
 import com.zhuzichu.android.repository.BR
-import com.zhuzichu.android.repository.viewmodel.ViewModelRepository
-import com.zhuzichu.android.shared.base.FragmentBase
-import com.zhuzichu.android.shared.domain.home.UseCaseGetReadme
-import com.zhuzichu.android.shared.entity.arg.ArgRepository
-import com.zhuzichu.android.shared.entity.param.ParamGetReadme
-import com.zhuzichu.android.shared.ext.autoLoading
-import com.zhuzichu.android.shared.route.RoutePath
-import com.zhuzichu.android.shared.view.XWebView
+import com.zhuzichu.android.repository.R
 import com.zhuzichu.android.repository.databinding.FragmentRepositoryBinding
+import com.zhuzichu.android.repository.viewmodel.ShareViewModel
+import com.zhuzichu.android.repository.viewmodel.ViewModelRepository
+import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
+import com.zhuzichu.android.shared.base.FragmentBase
+import com.zhuzichu.android.shared.entity.arg.ArgRepository
+import com.zhuzichu.android.shared.ext.setArg
+import com.zhuzichu.android.shared.route.RoutePath
 import kotlinx.android.synthetic.main.fragment_repository.*
-import java.lang.reflect.Field
 
 @Route(path = RoutePath.Repository.FRAGMENT_REPOSITORY_MAIN)
 class FragmentRepository :
     FragmentBase<FragmentRepositoryBinding, ViewModelRepository, ArgRepository>() {
 
-    private val useCaseGetReadme by lazy {
-        UseCaseGetReadme()
-    }
+    private val titles = listOf(
+        R.string.repository_info,
+        R.string.repository_files,
+        R.string.repository_commits,
+        R.string.repository_activity
+    )
 
-    companion object {
-        private const val PROGRESS_PROCESS = 0
-        private const val PROGRESS_GONE = 1
-    }
-
-    private lateinit var webView: XWebView
-
-    private lateinit var progressHandler: ProgressHandler
+    private val share by activityViewModels<ShareViewModel>()
 
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_repository
 
+    override fun initArgs(arg: ArgRepository) {
+        super.initArgs(arg)
+        share.repository.value = arg.repository
+    }
+
     override fun initView() {
         super.initView()
+        initTabAndViewPager()
         initTopBar()
-        initWebView()
+    }
+
+    override fun initVariable() {
+        super.initVariable()
+        binding?.setVariable(BR.share, share)
+    }
+
+    private fun initTabAndViewPager() {
+        val builder = tab.tabBuilder()
+        repeat(titles.size) {
+            tab.addTab(builder.build(context))
+        }
+        content.adapter = DefaultIntFragmentPagerAdapter(
+            childFragmentManager,
+            titles = titles,
+            list = listOf(
+                FragmentRepositoryInfo().setArg(arg),
+                FragmentRepositoryFile().setArg(arg),
+                FragmentRepositoryCommit().setArg(arg),
+                FragmentRepositoryActivity().setArg(arg)
+            )
+        )
+        tab.setupWithViewPager(content, true)
     }
 
     private fun initTopBar() {
@@ -63,218 +70,7 @@ class FragmentRepository :
             .setOnClickListener {
                 back()
             }
-        updateTitle(arg.name)
+        share.title.value = arg.repository.name
     }
 
-    private fun initWebView() {
-        webView = XWebView(requireContext())
-        progressHandler = ProgressHandler(progress_bar)
-        webview_container.addWebView(webView, false)
-        webview_container.setCustomOnScrollChangeListener { _, scrollX, scrollY, oldScrollX, oldScrollY ->
-            onScrollWebContent(scrollX, scrollY, oldScrollX, oldScrollY)
-        }
-        webView.webChromeClient = getWebViewChromeClient()
-        webView.webViewClient = getWebViewClient()
-        webView.requestFocus(View.FOCUS_DOWN)
-        setZoomControlGone(webView)
-        configWebView(webview_container, webView)
-        loadReadMe()
-    }
-
-    private fun loadReadMe() {
-        useCaseGetReadme.execute(ParamGetReadme(arg.login.toString(), arg.name.toString()))
-            .autoLoading(viewModel)
-            .life(viewModel)
-            .subscribe {
-                val html =
-                    """
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                    <title>${arg.name}</title>
-                    <style></style>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <link rel="stylesheet" type="text/css" href="file:///android_asset/md/readme.css">
-                    </head>
-                    <body>
-                    $it
-                    </html>
-                    """
-                webView.loadDataWithBaseURL(
-                    "file:///android_asset/md/",
-                    html,
-                    "text/html",
-                    "UTF-8",
-                    null
-                )//这种写法可以正确解码
-            }
-    }
-
-    private fun getWebViewChromeClient(): WebChromeClient {
-        return ExplorerWebViewChromeClient(this)
-    }
-
-    private fun getWebViewClient(): QMUIWebViewClient {
-        return ExplorerWebViewClient(
-            this,
-            false
-        )
-    }
-
-    private fun configWebView(webViewContainer: QMUIWebViewContainer, webView: QMUIWebView) {
-
-    }
-
-    private fun updateTitle(title: String?) {
-        viewModel.title.value = title
-    }
-
-    private fun onScrollWebContent(
-        scrollX: Int,
-        scrollY: Int,
-        oldScrollX: Int,
-        oldScrollY: Int
-    ) {
-
-    }
-
-
-    @Suppress("DEPRECATION")
-    private fun setZoomControlGone(webView: WebView) {
-        webView.settings.displayZoomControls = false
-        val classType: Class<*>
-        val field: Field
-        try {
-            classType = WebView::class.java
-            field = classType.getDeclaredField("mZoomButtonsController")
-            field.isAccessible = true
-            val zoomButtonsController = ZoomButtonsController(
-                webView
-            )
-            zoomButtonsController.zoomControls.visibility = View.GONE
-            try {
-                field[webView] = zoomButtonsController
-            } catch (e: IllegalArgumentException) {
-                e.printStackTrace()
-            } catch (e: IllegalAccessException) {
-                e.printStackTrace()
-            }
-        } catch (e: SecurityException) {
-            e.printStackTrace()
-        } catch (e: NoSuchFieldException) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun sendProgressMessage(progressType: Int, newProgress: Int, duration: Int) {
-        val msg = Message()
-        msg.what = progressType
-        msg.arg1 = newProgress
-        msg.arg2 = duration
-        progressHandler.sendMessage(msg)
-    }
-
-
-    private class ExplorerWebViewClient(
-        private val fragment: FragmentRepository,
-        needDispatchSafeAreaInset: Boolean
-    ) :
-        QMUIWebViewClient(needDispatchSafeAreaInset, true) {
-        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
-            super.onPageStarted(view, url, favicon)
-            fragment.updateTitle(view.title)
-            if (fragment.progressHandler.dstProgressIndex == 0) {
-                fragment.sendProgressMessage(
-                    PROGRESS_PROCESS,
-                    30,
-                    500
-                )
-            }
-        }
-
-        override fun onPageFinished(view: WebView, url: String) {
-            super.onPageFinished(view, url)
-            fragment.sendProgressMessage(
-                PROGRESS_GONE,
-                100,
-                0
-            )
-            fragment.updateTitle(view.title)
-        }
-    }
-
-    private class ExplorerWebViewChromeClient(private val fragment: FragmentRepository) :
-        WebChromeClient() {
-        override fun onProgressChanged(view: WebView, newProgress: Int) {
-            super.onProgressChanged(view, newProgress)
-            // 修改进度条
-            if (newProgress > fragment.progressHandler.dstProgressIndex) {
-                fragment.sendProgressMessage(
-                    PROGRESS_PROCESS,
-                    newProgress,
-                    100
-                )
-            }
-        }
-
-        override fun onReceivedTitle(view: WebView, title: String) {
-            super.onReceivedTitle(view, title)
-            fragment.updateTitle(view.title)
-        }
-
-        override fun onShowCustomView(view: View, callback: CustomViewCallback) {
-            callback.onCustomViewHidden()
-        }
-
-        override fun onHideCustomView() {}
-
-    }
-
-    private class ProgressHandler(
-        val progress_bar: ProgressBar
-    ) : Handler(Looper.getMainLooper()) {
-        private var isPageFinished = false
-        var dstProgressIndex = 0
-        private var duration = 0
-        private var animator: ObjectAnimator? = null
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                PROGRESS_PROCESS -> {
-                    isPageFinished = false
-                    dstProgressIndex = msg.arg1
-                    duration = msg.arg2
-                    progress_bar.visibility = View.VISIBLE
-                    if (animator != null && animator?.isRunning == true) {
-                        animator?.cancel()
-                    }
-                    animator = ObjectAnimator.ofInt(progress_bar, "progress", dstProgressIndex)
-                    animator?.duration = duration.toLong()
-                    animator?.addListener(object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            if (progress_bar.progress == 100) {
-                                sendEmptyMessageDelayed(PROGRESS_GONE, 500)
-                            }
-                        }
-                    })
-                    animator?.start()
-                }
-                PROGRESS_GONE -> {
-                    dstProgressIndex = 0
-                    duration = 0
-                    progress_bar.progress = 0
-                    progress_bar.visibility = View.GONE
-                    if (animator != null && animator?.isRunning == true) {
-                        animator?.cancel()
-                    }
-                    animator = ObjectAnimator.ofInt(progress_bar, "progress", 0)
-                    animator?.duration = 0
-                    animator?.removeAllListeners()
-                    isPageFinished = true
-                }
-                else -> {
-                }
-            }
-        }
-    }
 }

@@ -4,6 +4,10 @@
     <data>
 
         <variable
+            name="share"
+            type="com.zhuzichu.android.repository.viewmodel.ShareViewModel" />
+
+        <variable
             name="viewModel"
             type="com.zhuzichu.android.repository.viewmodel.ViewModelRepository" />
     </data>
@@ -20,29 +24,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:qmuiTopTitle="@{viewModel.title}">
+            app:qmuiTopTitle="@{share.title}" />
 
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:maxHeight="2dp"
-                android:minHeight="2dp"
-                android:progressDrawable="@drawable/web_explorer_progress" />
 
-        </com.qmuiteam.qmui.widget.QMUITopBarLayout>
-
-        <com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
-            android:id="@+id/webview_container"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topbar"
-            tools:layout_marginTop="?attr/qmui_topbar_height" />
+            tools:layout_marginTop="?attr/qmui_topbar_height">
+
+
+            <com.qmuiteam.qmui.widget.tab.QMUITabSegment
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qmui_config_color_white"
+                app:qmui_bottomDividerColor="?attr/qmui_skin_support_color_separator"
+                app:qmui_bottomDividerHeight="1px" />
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        </LinearLayout>
 
     </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2>
 

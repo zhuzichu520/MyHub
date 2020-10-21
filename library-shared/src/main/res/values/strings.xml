@@ -26,5 +26,15 @@
     <string name="settings_theme_battery">Set by Battery Saver</string>
     <string name="night_mode">Night mode</string>
 
+    <string name="repository_info">INFO</string>
+    <string name="repository_files">FILES</string>
+    <string name="repository_commits">COMMITS</string>
+    <string name="repository_activity">ACTIVITY</string>
+    <string name="repository_language_size">Language %s，size %s</string>
+    <string name="unknown">Unknown</string>
+    <string name="issues">issues</string>
+    <string name="stargazers">Stargazers</string>
+    <string name="watchers">Watchers</string>
+    <string name="forks">Forks</string>
 
 </resources>

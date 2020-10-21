@@ -33,8 +33,6 @@ data class BeanAuthor(
     var updatedAt: String? = null,
     @SerializedName("url")
     var url: String? = null
-
-
 ) {
     override fun toString(): String {
         return "BeanAuthor(app=$app, createdAt=$createdAt, fingerprint=$fingerprint, hashedToken=$hashedToken, id=$id, note=$note, noteUrl=$noteUrl, scopes=$scopes, token=$token, tokenLastEight=$tokenLastEight, updatedAt=$updatedAt, url=$url)"

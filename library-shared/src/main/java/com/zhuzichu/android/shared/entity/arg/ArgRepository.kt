@@ -1,6 +1,7 @@
 package com.zhuzichu.android.shared.entity.arg
 
 import com.hiwitech.android.mvvm.base.BaseArg
+import com.zhuzichu.android.shared.entity.bean.BeanRepository
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -11,6 +12,5 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 class ArgRepository(
-    val login: String? = null,
-    val name: String? = null
+    val repository: BeanRepository
 ) : BaseArg()
