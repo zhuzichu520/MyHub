@@ -8,6 +8,10 @@
     <string name="me">Me</string>
     <string name="setting">Setting</string>
     <string name="about">About</string>
+    <string name="search">Search</string>
+
+    <string name="trace">Trace</string>
+    <string name="search_title">Please enter search keywords</string>
 
     <string name="followers">Followers</string>
     <string name="following">Following</string>

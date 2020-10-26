@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.hiwitech.android.mvvm.base.ArgDefault
+import com.hiwitech.android.mvvm.ext.createCommand
 import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.domain.login.UseCaseGetUser
@@ -26,6 +27,11 @@ class ViewModelMe : ViewModelBase<ArgDefault>() {
     }
 
     override fun initLazyData() {
+        loadUser()
+    }
+
+    val emptyErrorCommand = createCommand {
+        emptyStatus.value = EnumEmptyStatus.LOADING
         loadUser()
     }
 

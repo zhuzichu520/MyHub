@@ -33,7 +33,7 @@ class FragmentRepository :
 
     override fun initArgs(arg: ArgRepository) {
         super.initArgs(arg)
-        share.repository.value = arg.repository
+        share.repository.value = arg
     }
 
     override fun initView() {
@@ -70,7 +70,7 @@ class FragmentRepository :
             .setOnClickListener {
                 back()
             }
-        share.title.value = arg.repository.name
+        share.title.value = arg.name
     }
 
 }

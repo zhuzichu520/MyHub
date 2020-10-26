@@ -2,6 +2,7 @@ package com.zhuzichu.android.repository.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.bean.BeanRepository
 
 /**
@@ -14,5 +15,5 @@ class ShareViewModel : ViewModel() {
 
     val title = MutableLiveData<String>()
 
-    val repository = MutableLiveData<BeanRepository>()
+    val repository = MutableLiveData<ArgRepository>()
 }

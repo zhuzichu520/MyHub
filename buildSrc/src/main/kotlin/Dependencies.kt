@@ -20,7 +20,7 @@ object Versions {
     const val EXIFINTERFACE = "1.2.0"
     const val RECYCLERVIEW = "1.1.0"
     const val CORE_KTX = "1.3.1"
-    const val FRAGMENT="1.3.0-alpha05"
+    const val FRAGMENT = "1.3.0-alpha05"
     const val ESPRESSO_CORE = "3.2.0"
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
@@ -69,6 +69,8 @@ object Versions {
     const val COIL = "0.13.0"
 
     const val JSOUP = "1.12.1"
+
+    const val ROOM = "2.2.5"
 }
 
 
@@ -103,8 +105,8 @@ object ClassPaths {
 object SupportLibs {
     const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
-    const val ANDROIDX_FRAGMENT="androidx.fragment:fragment:${Versions.FRAGMENT}"
-    const val ANDROIDX_FRAGMENT_KTX="androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
+    const val ANDROIDX_FRAGMENT = "androidx.fragment:fragment:${Versions.FRAGMENT}"
+    const val ANDROIDX_FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
 
     //exifinterface
     const val ANDROIDX_EXIFINTERFACE =
@@ -200,6 +202,10 @@ object Libs {
 
     const val JSOUP = "org.jsoup:jsoup:${Versions.JSOUP}"
 
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
+
+    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
+
 }
 
 
@@ -214,6 +220,7 @@ object Kapts {
 
     const val QMUI_ARCH_COMPILER = "com.qmuiteam:arch-compiler:${Versions.QMUI}"
 
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
 }
 
 object MyLibs {

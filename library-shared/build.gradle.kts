@@ -81,6 +81,7 @@ dependencies {
 
 
     kapt(Kapts.RXHTTP_COMPILER)
+    kapt(Kapts.ROOM_COMPILER)
 
     api(Libs.RXLIFE)
 
@@ -122,6 +123,9 @@ dependencies {
     api(Libs.QMUI_ARCH)
 
     api(Libs.JSOUP)
+
+    api(Libs.ROOM_KTX)
+    api(Libs.ROOM_RUNTIME)
 
     api(MyLibs.DEVELOPER_LIBS)
     api(MyLibs.DEVELOPER_MVVM)

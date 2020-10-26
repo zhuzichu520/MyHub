@@ -56,6 +56,7 @@ class InitModule(private val project: Project) {
             add("implementation", project.fileTree(mapOf("dir" to "libs", "include" to "*.jar")))
             add("api", project(mapOf("path" to ":library-shared")))
             add("kapt", Kapts.AROUTER_COMPILER)
+            add("kapt", Kapts.QMUI_ARCH_COMPILER)
         }
 
     }

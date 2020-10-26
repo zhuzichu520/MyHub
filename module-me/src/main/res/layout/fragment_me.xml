@@ -24,7 +24,7 @@
             android:fitsSystemWindows="true"
             app:qmuiTopTitle="@{@string/me}" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -36,147 +36,161 @@
             app:layout_constraintTop_toBottomOf="@+id/topbar"
             tools:layout_marginTop="?attr/qmui_topbar_height">
 
-            <com.qmuiteam.qmui.widget.QMUIRadiusImageView2
-                android:id="@+id/avatar"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="15dp"
-                android:scaleType="centerCrop"
-                app:crossfade="@{true}"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:placeholder="@{R.mipmap.ic_avatar_default}"
-                app:qmui_border_color="?attr/app_skin_color_primary"
-                app:qmui_border_width="3dp"
-                app:qmui_is_circle="true"
-                app:url="@{viewModel.user.avatarUrl}"
-                tools:srcCompat="@mipmap/ic_avatar_default" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:text="@{viewModel.user.name}"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
-                app:layout_constraintStart_toEndOf="@+id/avatar"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="name" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@{viewModel.user.login}"
-                android:textAppearance="?attr/textAppearanceBody2"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
-                app:layout_constraintStart_toEndOf="@+id/avatar"
-                app:layout_constraintTop_toBottomOf="@+id/name"
-                tools:text="login" />
-
-            <LinearLayout
-                android:id="@+id/follow"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/avatar">
+                android:layout_height="wrap_content">
+
+                <com.qmuiteam.qmui.widget.QMUIRadiusImageView2
+                    android:id="@+id/avatar"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="15dp"
+                    android:scaleType="centerCrop"
+                    app:crossfade="@{true}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{R.mipmap.ic_avatar_default}"
+                    app:qmui_border_color="?attr/app_skin_color_primary"
+                    app:qmui_border_width="3dp"
+                    app:qmui_is_circle="true"
+                    app:url="@{viewModel.user.avatarUrl}"
+                    tools:srcCompat="@mipmap/ic_avatar_default" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:text="@{viewModel.user.name}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintStart_toEndOf="@+id/avatar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+                    tools:text="name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@{viewModel.user.login}"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    app:layout_constraintStart_toEndOf="@+id/avatar"
+                    app:layout_constraintTop_toBottomOf="@+id/name"
+                    app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
+                    tools:text="login" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:id="@+id/follow"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/avatar">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/following"
-                        android:textAppearance="?attr/textAppearanceSubtitle2"
-                        app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.following.toString()}"
-                        android:textAppearance="?attr/textAppearanceCaption"
-                        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/following"
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.user.following.toString()}"
+                            android:textAppearance="?attr/textAppearanceCaption"
+                            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/app_skin_color_divider" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/followers"
+                            android:textAppearance="?attr/textAppearanceSubtitle2"
+                            app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.user.followers.toString()}"
+                            android:textAppearance="?attr/textAppearanceCaption"
+                            app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <View
-                    android:layout_width="0.5dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/app_skin_color_divider" />
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/app_skin_color_divider"
+                    app:layout_constraintTop_toBottomOf="@+id/follow" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/created_at"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:drawablePadding="15dp"
+                    android:padding="15dp"
+                    android:text="@{viewModel.createTime}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    app:layout_constraintTop_toBottomOf="@+id/follow"
+                    app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+                    tools:text="2019年10月16" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/followers"
-                        android:textAppearance="?attr/textAppearanceSubtitle2"
-                        app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.user.followers.toString()}"
-                        android:textAppearance="?attr/textAppearanceCaption"
-                        app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="?attr/app_skin_color_divider"
-                app:layout_constraintTop_toBottomOf="@+id/follow" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/created_at"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_clock"
-                android:drawablePadding="15dp"
-                android:padding="15dp"
-                android:text="@{viewModel.createTime}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
-                app:layout_constraintTop_toBottomOf="@+id/follow"
-                tools:text="2019年10月16" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="?attr/app_skin_color_divider"
-                app:layout_constraintTop_toBottomOf="@+id/created_at" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/app_skin_color_divider"
+                    app:layout_constraintTop_toBottomOf="@+id/created_at" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+                    android:id="@+id/group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/created_at" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
 
         <com.qmuiteam.qmui.widget.QMUIEmptyView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:qmui_skin_background="?attr/app_skin_color_background"
+            app:emptyErrorCommand="@{viewModel.emptyErrorCommand}"
             app:emptyStatus="@{viewModel.emptyStatus}"
             app:layout_constraintBottom_toBottomOf="@id/content"
             app:layout_constraintEnd_toEndOf="@id/content"
             app:layout_constraintStart_toStartOf="@id/content"
             app:layout_constraintTop_toTopOf="@+id/content"
+            app:qmui_skin_background="?attr/app_skin_color_background"
             tools:background="@null" />
 
     </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2>

@@ -3,19 +3,14 @@ package com.zhuzichu.android.repository.fragment
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -24,7 +19,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.activityViewModels
 import com.hiwitech.android.libs.tool.byteCountToDisplaySizeTwo
 import com.hiwitech.android.libs.tool.toLong
-import com.hiwitech.android.widget.log.lumberjack.L
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopAreaBehavior
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopDelegateLayout
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
@@ -116,7 +110,7 @@ class FragmentRepositoryInfo :
     }
 
     private fun initHeader() {
-        headerView = layoutInflater.inflate(R.layout.header_repository_info, coordinator,false)
+        headerView = layoutInflater.inflate(R.layout.header_repository_info, coordinator, false)
         fullName = headerView.findViewById(R.id.full_name)
         description = headerView.findViewById(R.id.description)
         info = headerView.findViewById(R.id.info)
@@ -157,7 +151,7 @@ class FragmentRepositoryInfo :
                     <!DOCTYPE html>
                     <html>
                     <head>
-                    <title>${arg.repository.name}</title>
+                    <title>${arg.name}</title>
                     <style>
                     </style>
                     <meta charset="utf-8">
@@ -190,8 +184,8 @@ class FragmentRepositoryInfo :
         )//这种写法可以正确解码
         useCaseGetReadme.execute(
             ParamGetReadme(
-                arg.repository.owner?.login.toString(),
-                arg.repository.name.toString()
+                arg.login.toString(),
+                arg.name.toString()
             )
         ).life(viewModel).subscribe {
             val method = "replaceBody(`${it}`)"

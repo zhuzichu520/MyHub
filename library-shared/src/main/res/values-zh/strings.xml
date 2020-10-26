@@ -9,6 +9,10 @@
     <string name="me">我的</string>
     <string name="setting">设置</string>
     <string name="about">关于</string>
+    <string name="search">搜索</string>
+
+    <string name="search_title">请输入搜索关键字</string>
+    <string name="trace">足迹</string>
 
     <string name="followers">关注者</string>
     <string name="following">关注中</string>

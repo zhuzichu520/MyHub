@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class BeanRepository(
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Long? = null,
     @SerializedName("node_id")
     var nodeId: String? = null,
     @SerializedName("name")

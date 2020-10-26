@@ -1,6 +1,7 @@
 package com.zhuzichu.android.shared.route
 
 object RoutePath {
+
     object Login {
         const val ACTIVITY_LOGIN_MAIN = "/login/activity/main"
         const val FRAGMENT_LOGIN_MAIN = "/login/fragment/main"
@@ -19,6 +20,7 @@ object RoutePath {
     object Me {
         const val ACTIVITY_ME_MAIN = "/me/activity/main"
         const val FRAGMENT_ME_MAIN = "/me/fragment/main"
+        const val FRAGMENT_ME_TRACE = "/me/fragment/trace"
     }
 
     object Web {
@@ -41,6 +43,7 @@ object RoutePath {
     object Search {
         const val ACTIVITY_SEARCH_MAIN = "/search/activity/main"
         const val FRAGMENT_SEARCH_MAIN = "/search/fragment/main"
+        const val FRAGMENT_SEARCH_RESULT = "/search/fragment/result"
     }
 
 }

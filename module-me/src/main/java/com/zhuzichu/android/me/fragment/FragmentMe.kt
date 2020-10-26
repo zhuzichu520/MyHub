@@ -1,7 +1,11 @@
 package com.zhuzichu.android.me.fragment
 
+import androidx.core.content.ContextCompat.getDrawable
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.mvvm.base.ArgDefault
+import com.qmuiteam.qmui.util.QMUIDisplayHelper
+import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView
+import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
 import com.zhuzichu.android.me.R
 import com.zhuzichu.android.me.BR
 import com.zhuzichu.android.me.databinding.FragmentMeBinding
@@ -20,6 +24,25 @@ class FragmentMe : FragmentBase<FragmentMeBinding, ViewModelMe, ArgDefault>() {
     override fun initView() {
         super.initView()
         initTopBar()
+        initGroup()
+    }
+
+    private fun initGroup() {
+        QMUIGroupListView.newSection(context)
+            .setTitle(String())
+            .addItemView(
+                group.createItemView(
+                    getDrawable(requireContext(), R.drawable.ic_trace),
+                    getString(R.string.trace),
+                    null,
+                    QMUICommonListItemView.HORIZONTAL,
+                    QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
+                )
+            ) {
+                navigate(RoutePath.Me.FRAGMENT_ME_TRACE)
+            }
+            .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(context, 16), 0)
+            .addTo(group)
     }
 
     private fun initTopBar() {

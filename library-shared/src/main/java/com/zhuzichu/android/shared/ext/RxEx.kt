@@ -83,3 +83,13 @@ fun <T> createObservable(
     Observable.create {
         closure.invoke(it)
     }
+
+fun <T> FlowableEmitter<T>.onErrorComplete(error: Throwable) {
+    this.onError(error)
+    this.onComplete()
+}
+
+fun <T> FlowableEmitter<T>.onNextComplete(value: T) {
+    this.onNext(value)
+    this.onComplete()
+}

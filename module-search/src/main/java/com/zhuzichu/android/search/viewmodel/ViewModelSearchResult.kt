@@ -1,27 +1,30 @@
-package com.zhuzichu.android.home.viewmodel
+package com.zhuzichu.android.search.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.hiwitech.android.mvvm.base.ArgDefault
 import com.hiwitech.android.mvvm.ext.createCommand
 import com.rxjava.rxlife.life
-import com.zhuzichu.android.home.R
-import com.zhuzichu.android.home.BR
+import com.zhuzichu.android.search.R
+import com.zhuzichu.android.search.BR
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.domain.home.UseCaseGetRepos
+import com.zhuzichu.android.shared.entity.arg.ArgSearch
 import com.zhuzichu.android.shared.entity.enumeration.EnumEmptyStatus
 import com.zhuzichu.android.shared.entity.param.ParamGetRepos
 import com.zhuzichu.android.shared.ext.itemBindingOf
 import com.zhuzichu.android.shared.item.ItemViewModelRepository
 
-class ViewModelHome : ViewModelBase<ArgDefault>() {
+class ViewModelSearchResult : ViewModelBase<ArgSearch>() {
 
-    private val pageSize = 20
-
-    var page = 1
+    val title = MutableLiveData<String>()
 
     private val useCaseGetRepos by lazy {
         UseCaseGetRepos()
     }
+
+
+    private val pageSize = 20
+
+    var page = 1
 
     val emptyStatus = MutableLiveData(EnumEmptyStatus.LOADING)
 
@@ -35,7 +38,7 @@ class ViewModelHome : ViewModelBase<ArgDefault>() {
     }
 
     fun loadData(finally: (() -> Unit)? = null) {
-        useCaseGetRepos.execute(ParamGetRepos("Android", page, pageSize))
+        useCaseGetRepos.execute(ParamGetRepos(arg.keyword, page, pageSize))
             .doFinally {
                 finally?.invoke()
             }
@@ -60,5 +63,6 @@ class ViewModelHome : ViewModelBase<ArgDefault>() {
                 }
             )
     }
+
 
 }
