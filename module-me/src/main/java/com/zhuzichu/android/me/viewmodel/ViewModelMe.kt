@@ -7,7 +7,7 @@ import com.hiwitech.android.mvvm.base.ArgDefault
 import com.hiwitech.android.mvvm.ext.createCommand
 import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.base.ViewModelBase
-import com.zhuzichu.android.shared.domain.login.UseCaseGetUser
+import com.zhuzichu.android.shared.domain.UseCaseGetUser
 import com.zhuzichu.android.shared.entity.bean.BeanUser
 import com.zhuzichu.android.shared.entity.enumeration.EnumEmptyStatus
 import com.zhuzichu.android.shared.tools.ParseDateFormat

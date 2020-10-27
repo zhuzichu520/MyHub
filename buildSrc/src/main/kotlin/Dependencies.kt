@@ -71,6 +71,8 @@ object Versions {
     const val JSOUP = "1.12.1"
 
     const val ROOM = "2.2.5"
+
+    const val RECYCLICAL = "1.1.1"
 }
 
 
@@ -153,6 +155,7 @@ object Libs {
     const val RXJAVA = "io.reactivex.rxjava3:rxjava:${Versions.RXJAVA}"
     const val RXANDROID = "io.reactivex.rxjava3:rxandroid:${Versions.RXANDROID}"
     const val RXBINDING_CORE = "com.jakewharton.rxbinding4:rxbinding-core:${Versions.RXBINDING}"
+    const val RXBINDING_VIEWPAGER = "com.jakewharton.rxbinding4:rxbinding-viewpager:${Versions.RXBINDING}"
     const val RXPERMISSIONS = "com.github.tbruyelle:rxpermissions:${Versions.RXPERMISSIONS}"
 
     //adapter
@@ -206,6 +209,7 @@ object Libs {
 
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
 
+    const val RECYCLICAL = "com.afollestad:recyclical:${Versions.RECYCLICAL}"
 }
 
 

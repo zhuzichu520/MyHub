@@ -18,12 +18,9 @@ import com.hiwitech.android.libs.tool.showView
 import com.qmuiteam.qmui.widget.webview.QMUIWebView
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewContainer
-import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.base.FragmentBase
-import com.zhuzichu.android.shared.domain.home.UseCaseGetReadme
+import com.zhuzichu.android.shared.domain.UseCaseGetReadme
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
-import com.zhuzichu.android.shared.entity.param.ParamGetReadme
-import com.zhuzichu.android.shared.ext.autoLoading
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.web.BR
 import com.zhuzichu.android.web.R

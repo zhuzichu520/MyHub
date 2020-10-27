@@ -18,9 +18,6 @@ fun bindImageView(
     crossfade: Boolean?,
     @DrawableRes placeholder: Int?
 ) {
-    placeholder?.let {
-        imageView.setImageResource(placeholder)
-    }
     (url as? String)?.let {
         imageView.load(url) {
             crossfade?.let {
@@ -28,6 +25,7 @@ fun bindImageView(
             }
             placeholder?.let {
                 placeholder(it)
+                error(it)
             }
         }
     }

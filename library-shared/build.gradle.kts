@@ -90,6 +90,7 @@ dependencies {
     api(Libs.OKHTTP)
     api(Libs.RXANDROID)
     api(Libs.RXBINDING_CORE)
+    api(Libs.RXBINDING_VIEWPAGER)
     api(Libs.RXJAVA)
     api(Libs.RXHTTP)
     api(Libs.RXPERMISSIONS)
@@ -121,6 +122,8 @@ dependencies {
 
     api(Libs.QMUI)
     api(Libs.QMUI_ARCH)
+
+    api(Libs.RECYCLICAL)
 
     api(Libs.JSOUP)
 

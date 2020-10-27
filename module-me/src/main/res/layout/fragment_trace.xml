@@ -41,7 +41,7 @@
                 app:items="@{viewModel.items}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:qmui_is_target="true"
-                tools:listitem="@layout/item_repo" />
+                tools:listitem="@layout/item_repository" />
 
             <com.qmuiteam.qmui.widget.pullLayout.QMUIPullRefreshView
                 android:layout_width="wrap_content"

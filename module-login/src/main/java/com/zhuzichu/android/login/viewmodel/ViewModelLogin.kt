@@ -7,7 +7,7 @@ import com.hiwitech.android.mvvm.base.ArgDefault
 import com.hiwitech.android.mvvm.ext.createCommand
 import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.base.ViewModelBase
-import com.zhuzichu.android.shared.domain.login.UseCaseAuthorizations
+import com.zhuzichu.android.shared.domain.UseCaseAuthorizations
 import com.zhuzichu.android.shared.entity.arg.ArgMain
 import com.zhuzichu.android.shared.entity.enumeration.EnumMainType
 import com.zhuzichu.android.shared.entity.param.ParamAuthor

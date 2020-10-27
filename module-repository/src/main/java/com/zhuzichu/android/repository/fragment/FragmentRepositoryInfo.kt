@@ -29,11 +29,10 @@ import com.zhuzichu.android.repository.databinding.FragmentRepositoryInfoBinding
 import com.zhuzichu.android.repository.viewmodel.ShareViewModel
 import com.zhuzichu.android.repository.viewmodel.ViewModelRepositoryInfo
 import com.zhuzichu.android.shared.base.FragmentBase
-import com.zhuzichu.android.shared.domain.home.UseCaseGetReadme
+import com.zhuzichu.android.shared.domain.UseCaseGetReadme
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
 import com.zhuzichu.android.shared.entity.param.ParamGetReadme
-import com.zhuzichu.android.shared.ext.autoLoading
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.view.XWebView
 import kotlinx.android.synthetic.main.fragment_repository_info.*

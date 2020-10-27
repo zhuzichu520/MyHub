@@ -26,6 +26,6 @@ interface DaoTrace {
     @Query("SELECT * FROM DataTrace WHERE repositoryId=:id")
     fun selectTraceByRepositoryId(id: Long?): List<DataTrace>
 
-    @Query("SELECT * FROM DataTrace")
+    @Query("SELECT * FROM DataTrace ORDER BY date DESC")
     fun selectList(): LiveData<List<DataTrace>>
 }

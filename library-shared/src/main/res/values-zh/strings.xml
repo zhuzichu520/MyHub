@@ -14,6 +14,24 @@
     <string name="search_title">请输入搜索关键字</string>
     <string name="trace">足迹</string>
 
+    <string name="best_match">最匹配的</string>
+    <string name="most_stars">最多星标的</string>
+    <string name="fewest_stars">最少星标的</string>
+    <string name="most_forks">最多分支的</string>
+    <string name="fewest_forks">最少分支的</string>
+    <string name="recently_updated">最近更新的</string>
+    <string name="least_recently_updated">以前更新的</string>
+
+    <string name="most_followers">最多跟随者的</string>
+    <string name="fewest_followers">最少跟随者的</string>
+    <string name="most_recently_joined">最近加入的</string>
+    <string name="least_recently_joined">以前加入的</string>
+    <string name="most_repositories">最多版本库的</string>
+    <string name="fewest_repositories">最少版本库的</string>
+
+    <string name="repositories">版本库</string>
+    <string name="users">用户</string>
+
     <string name="followers">关注者</string>
     <string name="following">关注中</string>
 

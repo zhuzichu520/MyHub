@@ -9,7 +9,7 @@ data class BeanOwner(
     @SerializedName("login")
     var login: String? = null,
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Long? = null,
     @SerializedName("node_id")
     var nodeId: String? = null,
     @SerializedName("avatar_url")

@@ -30,11 +30,11 @@ class FragmentSettingAbout :
         viewModel.version.value = requireContext().getVersionName()
 
         //github
-        val titleGithub = R.string.github.toStringByResId(requireContext())
+        val titleGithub = getString(R.string.github)
         val itemGithub = about_list.createItemView(titleGithub)
         QMUIGroupListView.newSection(context)
             .addItemView(itemGithub) {
-                val url = "https://github.com/Tencent/QMUI_Android"
+                val url = "https://github.com/zhuzichu520/MyHub"
                 navigate(
                     RoutePath.Web.ACTIVITY_WEB_MAIN,
                     ArgWeb(url, titleGithub)

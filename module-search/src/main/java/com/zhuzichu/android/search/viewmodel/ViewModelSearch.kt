@@ -23,7 +23,12 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
      * 点击搜索事件
      */
     val onClickCommand = createCommand {
-        val keyword = keyword.value ?: android
+        var keyword = keyword.value
+        keyword = if (!keyword.isNullOrBlank()) {
+            keyword
+        } else {
+            android
+        }
         navigate(RoutePath.Search.FRAGMENT_SEARCH_RESULT, ArgSearch(keyword))
     }
 

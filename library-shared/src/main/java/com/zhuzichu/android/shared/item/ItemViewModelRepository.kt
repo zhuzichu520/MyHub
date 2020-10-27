@@ -2,12 +2,11 @@ package com.zhuzichu.android.shared.item
 
 import androidx.lifecycle.MutableLiveData
 import com.hiwitech.android.mvvm.base.BaseItemViewModel
-import com.hiwitech.android.mvvm.databinding.BindingCommand
 import com.hiwitech.android.mvvm.ext.createCommand
 import com.rxjava.rxlife.life
 import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.base.ViewModelBase
-import com.zhuzichu.android.shared.domain.trace.UseCaseUpdateTrace
+import com.zhuzichu.android.shared.domain.UseCaseUpdateTrace
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.bean.BeanRepository
 import com.zhuzichu.android.shared.entity.data.DataTrace

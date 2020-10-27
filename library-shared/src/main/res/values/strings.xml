@@ -13,6 +13,25 @@
     <string name="trace">Trace</string>
     <string name="search_title">Please enter search keywords</string>
 
+    <string name="best_match">Best match</string>
+    <string name="most_stars">Most stars</string>
+    <string name="fewest_stars">Fewest stars</string>
+    <string name="most_forks">Most forks</string>
+    <string name="fewest_forks">Fewest forks</string>
+    <string name="recently_updated">Recently updated</string>
+    <string name="least_recently_updated">Least recently updated</string>
+
+    <string name="most_followers">Most followers</string>
+    <string name="fewest_followers">Fewest followers</string>
+    <string name="most_recently_joined">Most recently joined</string>
+    <string name="least_recently_joined">Least recently joined</string>
+    <string name="most_repositories">Most repositories</string>
+    <string name="fewest_repositories">Fewest repositories</string>
+
+
+    <string name="repositories">Repositories</string>
+    <string name="users">Users</string>
+
     <string name="followers">Followers</string>
     <string name="following">Following</string>
 

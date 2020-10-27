@@ -3,6 +3,7 @@ package com.zhuzichu.android.shared.entity.data
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.zhuzichu.android.shared.entity.bean.BeanOwner
 import com.zhuzichu.android.shared.entity.bean.BeanRepository
 import com.zhuzichu.android.shared.entity.bean.BeanUser
 import kotlinx.android.parcel.Parcelize
@@ -60,7 +61,7 @@ data class DataTrace(
             )
         }
 
-        fun beanToData(bean: BeanUser): DataTrace {
+        fun beanToData(bean: BeanOwner): DataTrace {
             return DataTrace(
                 null,
                 null,

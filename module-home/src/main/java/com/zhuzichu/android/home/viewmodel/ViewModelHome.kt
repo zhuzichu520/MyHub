@@ -7,9 +7,9 @@ import com.rxjava.rxlife.life
 import com.zhuzichu.android.home.R
 import com.zhuzichu.android.home.BR
 import com.zhuzichu.android.shared.base.ViewModelBase
-import com.zhuzichu.android.shared.domain.home.UseCaseGetRepos
+import com.zhuzichu.android.shared.domain.UseCaseSearchRepositories
 import com.zhuzichu.android.shared.entity.enumeration.EnumEmptyStatus
-import com.zhuzichu.android.shared.entity.param.ParamGetRepos
+import com.zhuzichu.android.shared.entity.param.ParamSearchRepositories
 import com.zhuzichu.android.shared.ext.itemBindingOf
 import com.zhuzichu.android.shared.item.ItemViewModelRepository
 
@@ -20,14 +20,14 @@ class ViewModelHome : ViewModelBase<ArgDefault>() {
     var page = 1
 
     private val useCaseGetRepos by lazy {
-        UseCaseGetRepos()
+        UseCaseSearchRepositories()
     }
 
     val emptyStatus = MutableLiveData(EnumEmptyStatus.LOADING)
 
     val items = MutableLiveData<List<ItemViewModelRepository>>()
 
-    val itemBinding = itemBindingOf<ItemViewModelRepository>(BR.item, R.layout.item_repo)
+    val itemBinding = itemBindingOf<ItemViewModelRepository>(BR.item, R.layout.item_repository)
 
     val emptyErrorCommand = createCommand {
         emptyStatus.value = EnumEmptyStatus.LOADING
@@ -35,7 +35,7 @@ class ViewModelHome : ViewModelBase<ArgDefault>() {
     }
 
     fun loadData(finally: (() -> Unit)? = null) {
-        useCaseGetRepos.execute(ParamGetRepos("Android", page, pageSize))
+        useCaseGetRepos.execute(ParamSearchRepositories("Android", page, pageSize))
             .doFinally {
                 finally?.invoke()
             }
