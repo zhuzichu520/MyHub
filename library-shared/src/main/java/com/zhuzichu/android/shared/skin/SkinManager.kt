@@ -52,6 +52,10 @@ class SkinManager {
             return QMUISkinManager.defaultInstance(context).currentSkin
         }
 
+        fun isDark(): Boolean {
+            return getCurrentSkin() == SKIN_DARK
+        }
+
         fun applyConfigurationChanged(newConfig: Configuration) {
             when (AppStorage.uiMode) {
                 MODE_NIGHT_FOLLOW_SYSTEM -> {

@@ -7,15 +7,16 @@ import io.reactivex.rxjava3.core.Observable
 import rxhttp.RxHttp
 
 /**
- * desc 获取用户信息
+ * desc 授权登录
  * author: 朱子楚
  * time: 2020/9/16 1:13 PM
  * since: v 1.0.0
  */
-class UseCaseGetUser : UseCase<String, Observable<BeanUser>>() {
+class UseCaseGetPerson : UseCase<Unit, Observable<BeanUser>>() {
 
-    override fun execute(parameters: String): Observable<BeanUser> {
-        return RxHttp.get("/users/%s", parameters)
+    override fun execute(parameters: Unit): Observable<BeanUser> {
+        return RxHttp.postJson("/user")
+            .addHeader("Accept: application/json")
             .asClass(BeanUser::class.java)
             .bindToSchedulers()
     }

@@ -8,6 +8,7 @@ body {
     line-height: 1.5;
     word-wrap: break-word;
     color: #ddd;
+    background: #000000;
 }
 
 /* hide title link icon */

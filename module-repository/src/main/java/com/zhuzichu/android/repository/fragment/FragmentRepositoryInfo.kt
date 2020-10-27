@@ -34,6 +34,7 @@ import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
 import com.zhuzichu.android.shared.entity.param.ParamGetReadme
 import com.zhuzichu.android.shared.route.RoutePath
+import com.zhuzichu.android.shared.skin.SkinManager
 import com.zhuzichu.android.shared.view.XWebView
 import kotlinx.android.synthetic.main.fragment_repository_info.*
 import java.lang.reflect.Field
@@ -145,6 +146,7 @@ class FragmentRepositoryInfo :
     }
 
     private fun loadReadMe() {
+        val css = if (SkinManager.isDark()) "markdown_dark.css" else "markdown.css"
         val html =
             """
                     <!DOCTYPE html>
@@ -155,7 +157,7 @@ class FragmentRepositoryInfo :
                     </style>
                     <meta charset="utf-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <link rel="stylesheet" type="text/css" href="file:///android_asset/css/readme.css">
+                    <link rel="stylesheet" type="text/css" href="file:///android_asset/css/${css}">
                     <link rel="stylesheet" type="text/css" href="file:///android_asset/css/loading.css">
                     <script>
                     function replaceBody(body){
