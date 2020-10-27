@@ -107,6 +107,12 @@ class FragmentRepositoryInfo :
             forks.text = it.forksCount.toString()
             watchers.text = it.watchers.toString()
         }
+
+        SkinManager.onSkinChangeListener.observe(viewLifecycleOwner) {
+            val method = "loadStyle(`${getMarkDownCss()}`)"
+            webView.evaluateJavascript(method) {
+            }
+        }
     }
 
     private fun initHeader() {
@@ -126,6 +132,7 @@ class FragmentRepositoryInfo :
         topLayout.headerView = headerView
 
         webView = XWebView(requireContext())
+        webView.setBackgroundColor(0)
         topLayout.delegateView = webView
 
         val topLp = CoordinatorLayout.LayoutParams(
@@ -145,8 +152,14 @@ class FragmentRepositoryInfo :
         loadReadMe()
     }
 
+    private fun getMarkDownCss(): String {
+        return if (SkinManager.isDark())
+            "file:///android_asset/css/markdown_dark.css"
+        else
+            "file:///android_asset/css/markdown.css"
+    }
+
     private fun loadReadMe() {
-        val css = if (SkinManager.isDark()) "markdown_dark.css" else "markdown.css"
         val html =
             """
                     <!DOCTYPE html>
@@ -157,11 +170,15 @@ class FragmentRepositoryInfo :
                     </style>
                     <meta charset="utf-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <link rel="stylesheet" type="text/css" href="file:///android_asset/css/${css}">
+                    <link id="markdown" rel="stylesheet" type="text/css" href="${getMarkDownCss()}">
                     <link rel="stylesheet" type="text/css" href="file:///android_asset/css/loading.css">
                     <script>
                     function replaceBody(body){
                     window.document.body.innerHTML = body
+                    }
+                    function loadStyle(url){
+                    var link = document.getElementById('markdown');
+                    link.href = url;
                     }
                     </script>
                     </head>
