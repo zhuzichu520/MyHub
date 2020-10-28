@@ -43,6 +43,7 @@ android {
             }
         }
 
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -69,7 +70,7 @@ android {
     }
 
     buildFeatures {
-        dataBinding=true
+        dataBinding = true
     }
 
     androidExtensions {
@@ -89,4 +90,10 @@ dependencies {
     api(project(path = ":library-shared"))
     kapt(Kapts.AROUTER_COMPILER)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.5")
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
+    androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+    androidTestImplementation(AndroidTestingLib.UIAUTOMATOR)
+    testImplementation(TestingLib.JUNIT)
 }

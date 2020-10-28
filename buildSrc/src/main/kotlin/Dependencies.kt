@@ -74,6 +74,8 @@ object Versions {
     const val RECYCLICAL = "1.1.1"
 
     const val PAGING = "2.1.2"
+
+    const val UIAUTOMATOR="2.2.0"
 }
 
 
@@ -136,6 +138,7 @@ object AndroidTestingLib {
     const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+    const val UIAUTOMATOR="androidx.test.uiautomator:uiautomator:${Versions.UIAUTOMATOR}"
 }
 
 /**
