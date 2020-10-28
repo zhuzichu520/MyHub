@@ -66,9 +66,29 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                app:onClickCommand="@{viewModel.onClickCommand}"
                 android:padding="10dp"
-                android:text="@string/search" />
+                android:text="@string/search"
+                app:onClickCommand="@{viewModel.onClickCommand}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="6dp"
+                android:text="@string/search_history"
+                android:textColor="?attr/app_skin_color_font_primary"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:qmui_skin_text_color="attr/app_skin_color_font_primary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:diffConfig="@{viewModel.diff}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.items}"
+                tools:listitem="@layout/item_search_hisory" />
 
         </LinearLayout>
 

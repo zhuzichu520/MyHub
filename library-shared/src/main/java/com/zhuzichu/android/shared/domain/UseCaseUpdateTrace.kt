@@ -3,6 +3,7 @@ package com.zhuzichu.android.shared.domain
 import com.hiwitech.android.mvvm.domain.UseCase
 import com.zhuzichu.android.shared.db.daoTrace
 import com.zhuzichu.android.shared.entity.data.DataTrace
+import com.zhuzichu.android.shared.ext.bindToSchedulers
 import com.zhuzichu.android.shared.ext.createFlowable
 import com.zhuzichu.android.shared.ext.onNextComplete
 import io.reactivex.rxjava3.core.Flowable
@@ -17,7 +18,7 @@ import java.util.*
 class UseCaseUpdateTrace : UseCase<DataTrace, Flowable<LongArray>>() {
 
     override fun execute(parameters: DataTrace): Flowable<LongArray> {
-        return createFlowable {
+        return createFlowable<LongArray> {
             val list = when (parameters.type) {
                 DataTrace.TYPE_REPOSITORY -> {
                     daoTrace().selectTraceByRepositoryId(parameters.repositoryId)
@@ -35,7 +36,7 @@ class UseCaseUpdateTrace : UseCase<DataTrace, Flowable<LongArray>>() {
                 val trace = list.first()
                 onNextComplete(daoTrace().addTrace(parameters.copy(id = trace.id, date = Calendar.getInstance())))
             }
-        }
+        }.bindToSchedulers()
     }
 
 }

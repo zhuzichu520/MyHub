@@ -7,7 +7,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.hiwitech.android.mvvm.domain.UseCase
+import com.zhuzichu.android.shared.db.dao.DaoHistory
 import com.zhuzichu.android.shared.db.dao.DaoTrace
+import com.zhuzichu.android.shared.entity.data.DataSearchHistory
 import com.zhuzichu.android.shared.entity.data.DataTrace
 import com.zhuzichu.android.shared.global.AppGlobal.context
 
@@ -20,12 +22,15 @@ import com.zhuzichu.android.shared.global.AppGlobal.context
 @Database(
     entities = [
         DataTrace::class,
+        DataSearchHistory::class,
     ], version = 1, exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class DatabaseHub : RoomDatabase() {
 
     abstract fun daoTrace(): DaoTrace
+
+    abstract fun daoHistory(): DaoHistory
 
     companion object {
 
@@ -66,4 +71,8 @@ abstract class DatabaseHub : RoomDatabase() {
 
 fun daoTrace(): DaoTrace {
     return DatabaseHub.getInstance().daoTrace()
+}
+
+fun daoHistory(): DaoHistory {
+    return DatabaseHub.getInstance().daoHistory()
 }

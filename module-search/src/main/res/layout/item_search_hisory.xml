@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.zhuzichu.android.search.viewmodel.ItemViewModelSearcHistory" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.qmuiteam.qmui.layout.QMUIConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="8dp"
+            app:onClickCommand="@{item.onClickCommand}"
+            app:qmui_radius="6dp"
+            app:qmui_shadowAlpha="0.75"
+            app:qmui_shadowElevation="2dp"
+            app:qmui_skin_background="?attr/app_skin_color_background_item">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:lines="1"
+                android:text="@{item.name}"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avatar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
+                tools:text="MultiSnapRecyclerView" />
+
+        </com.qmuiteam.qmui.layout.QMUIConstraintLayout>
+
+
+    </FrameLayout>
+</layout>

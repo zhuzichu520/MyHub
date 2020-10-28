@@ -13,6 +13,7 @@
 
     <string name="search_title">请输入搜索关键字</string>
     <string name="trace">足迹</string>
+    <string name="search_history">搜索历史</string>
 
     <string name="best_match">最匹配的</string>
     <string name="most_stars">最多星标的</string>

@@ -12,6 +12,7 @@
 
     <string name="trace">Trace</string>
     <string name="search_title">Please enter search keywords</string>
+    <string name="search_history">Search History</string>
 
     <string name="best_match">Best match</string>
     <string name="most_stars">Most stars</string>
