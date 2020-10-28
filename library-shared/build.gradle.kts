@@ -97,6 +97,7 @@ dependencies {
 
     api(Libs.BINDING_COLLECTION_ADAPTER)
     api(Libs.BINDING_COLLECTION_ADAPTER_RECYCLERVIEW)
+    api(Libs.BINDING_COLLECTION_ADAPTER_PAGING)
 
     api(Libs.TIMBER)
     api(Libs.LOGBACK_ANDROID)
@@ -108,8 +109,6 @@ dependencies {
     api(Libs.ONCE)
     api(Libs.MULTIDEX)
     api(Libs.MMKV)
-
-    api(Libs.AGENTWEB)
 
     api(Libs.GUAVA)
     api(Libs.GSON)
@@ -129,6 +128,7 @@ dependencies {
 
     api(Libs.ROOM_KTX)
     api(Libs.ROOM_RUNTIME)
+    api(Libs.PAGING)
 
     api(MyLibs.DEVELOPER_LIBS)
     api(MyLibs.DEVELOPER_MVVM)

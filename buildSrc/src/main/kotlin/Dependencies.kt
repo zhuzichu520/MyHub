@@ -37,6 +37,7 @@ object Versions {
     const val MATERIAL = "1.2.0"
 
     const val BINDING_COLLECTION_ADAPTER = "4.0.0"
+    const val BINDING_COLLECTION_ADAPTER_PAGING = "3.1.1"
 
     const val TIMBER = "4.7.1"
     const val LOGBACK = "2.0.0"
@@ -50,8 +51,6 @@ object Versions {
     const val MULTIDEX = "2.0.1"
     const val ONCE = "1.3.0"
     const val AUTOSIZE = "1.2.1"
-
-    const val AGENTWEB = "4.1.4"
 
     const val GUAVA = "27.0.1-android"
 
@@ -73,6 +72,8 @@ object Versions {
     const val ROOM = "2.2.5"
 
     const val RECYCLICAL = "1.1.1"
+
+    const val PAGING = "2.1.2"
 }
 
 
@@ -163,6 +164,8 @@ object Libs {
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${Versions.BINDING_COLLECTION_ADAPTER}"
     const val BINDING_COLLECTION_ADAPTER_RECYCLERVIEW =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${Versions.BINDING_COLLECTION_ADAPTER}"
+    const val BINDING_COLLECTION_ADAPTER_PAGING =
+        "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-paging:${Versions.BINDING_COLLECTION_ADAPTER_PAGING}"
 
     //log
     const val TIMBER =
@@ -184,9 +187,6 @@ object Libs {
 
     //mmkv
     const val MMKV = "com.tencent:mmkv-static:${Versions.MMKV}"
-
-    //agentweb
-    const val AGENTWEB = "com.just.agentweb:agentweb:${Versions.AGENTWEB}"
 
     //guava
     const val GUAVA = "com.google.guava:guava:${Versions.GUAVA}"
@@ -210,6 +210,8 @@ object Libs {
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
 
     const val RECYCLICAL = "com.afollestad:recyclical:${Versions.RECYCLICAL}"
+
+    const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
 }
 
 

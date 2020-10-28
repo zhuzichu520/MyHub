@@ -1,6 +1,5 @@
 package com.zhuzichu.android.shared.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -26,6 +25,7 @@ interface DaoTrace {
     @Query("SELECT * FROM DataTrace WHERE repositoryId=:id")
     fun selectTraceByRepositoryId(id: Long?): List<DataTrace>
 
-    @Query("SELECT * FROM DataTrace ORDER BY date DESC")
-    fun selectList(): LiveData<List<DataTrace>>
+    @Query("SELECT * FROM DataTrace ORDER BY date DESC LIMIT :limit OFFSET :offset")
+    fun selectList(limit:Int,offset:Int):  List<DataTrace>
+
 }
