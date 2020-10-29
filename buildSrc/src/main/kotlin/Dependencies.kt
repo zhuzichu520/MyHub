@@ -75,7 +75,6 @@ object Versions {
 
     const val PAGING = "2.1.2"
 
-    const val UIAUTOMATOR="2.2.0"
 }
 
 
@@ -138,7 +137,6 @@ object AndroidTestingLib {
     const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
-    const val UIAUTOMATOR="androidx.test.uiautomator:uiautomator:${Versions.UIAUTOMATOR}"
 }
 
 /**
@@ -159,7 +157,8 @@ object Libs {
     const val RXJAVA = "io.reactivex.rxjava3:rxjava:${Versions.RXJAVA}"
     const val RXANDROID = "io.reactivex.rxjava3:rxandroid:${Versions.RXANDROID}"
     const val RXBINDING_CORE = "com.jakewharton.rxbinding4:rxbinding-core:${Versions.RXBINDING}"
-    const val RXBINDING_VIEWPAGER = "com.jakewharton.rxbinding4:rxbinding-viewpager:${Versions.RXBINDING}"
+    const val RXBINDING_VIEWPAGER =
+        "com.jakewharton.rxbinding4:rxbinding-viewpager:${Versions.RXBINDING}"
     const val RXPERMISSIONS = "com.github.tbruyelle:rxpermissions:${Versions.RXPERMISSIONS}"
 
     //adapter

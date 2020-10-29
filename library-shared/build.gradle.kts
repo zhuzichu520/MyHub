@@ -134,4 +134,10 @@ dependencies {
     api(MyLibs.DEVELOPER_MVVM)
     api(MyLibs.DEVELOPER_WIDGET)
 
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
+    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
+    androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+    testImplementation(TestingLib.JUNIT)
+
 }

@@ -94,6 +94,5 @@ dependencies {
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
-    androidTestImplementation(AndroidTestingLib.UIAUTOMATOR)
     testImplementation(TestingLib.JUNIT)
 }

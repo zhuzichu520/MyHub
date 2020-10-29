@@ -5,6 +5,7 @@ import com.hiwitech.android.mvvm.domain.UseCase
 import com.zhuzichu.android.shared.entity.bean.BeanAuthor
 import com.zhuzichu.android.shared.entity.param.ParamAuthor
 import com.zhuzichu.android.shared.ext.bindToSchedulers
+import com.zhuzichu.android.shared.storage.AppStorage
 import io.reactivex.rxjava3.core.Observable
 import rxhttp.RxHttp
 
@@ -19,6 +20,7 @@ class UseCaseAuthorizations : UseCase<ParamAuthor, Observable<BeanAuthor>>() {
     override fun execute(parameters: ParamAuthor): Observable<BeanAuthor> {
         return RxHttp.postJson("/authorizations")
             .addHeader("Accept: application/json")
+            .addHeader("Authorization", parameters.basicToken)
             .addAll(object2Json(parameters.authorizations))
             .asClass(BeanAuthor::class.java)
             .bindToSchedulers()

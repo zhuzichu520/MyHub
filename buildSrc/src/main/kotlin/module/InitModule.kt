@@ -57,6 +57,11 @@ class InitModule(private val project: Project) {
             add("api", project(mapOf("path" to ":library-shared")))
             add("kapt", Kapts.AROUTER_COMPILER)
             add("kapt", Kapts.QMUI_ARCH_COMPILER)
+            add("androidTestImplementation", AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
+            add("androidTestImplementation", AndroidTestingLib.ANDROIDX_TEST_RULES)
+            add("androidTestImplementation", AndroidTestingLib.ANDROIDX_TEST_RUNNER)
+            add("androidTestImplementation", AndroidTestingLib.ESPRESSO_CORE)
+            add("testImplementation", TestingLib.JUNIT)
         }
 
     }

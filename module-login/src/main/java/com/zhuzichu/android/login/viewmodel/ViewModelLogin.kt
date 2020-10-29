@@ -16,6 +16,7 @@ import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.storage.AppStorage
 import okhttp3.Credentials
 
+
 class ViewModelLogin : ViewModelBase<ArgDefault>() {
 
     val username = MutableLiveData<String>("zhuzichu520")
@@ -31,9 +32,10 @@ class ViewModelLogin : ViewModelBase<ArgDefault>() {
             username.value.toStringEmpty(),
             password.value.toStringEmpty()
         )
-        AppStorage.token = basicToken
+
+
         useCaseAuthorizations.execute(
-            ParamAuthor()
+            ParamAuthor(basicToken = basicToken)
         ).autoLoading(this).life(this).subscribe(
             {
                 AppStorage.token = "token ${it.token}"

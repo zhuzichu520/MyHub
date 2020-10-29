@@ -1,4 +1,4 @@
-package com.zhuzichu.android.myhub
+package com.zhuzichu.android.login
 
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
