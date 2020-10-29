@@ -36,7 +36,10 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
     val items = MutableLiveData<List<ItemViewModelSearcHistory>>()
 
     val diff = object : DiffUtil.ItemCallback<ItemViewModelSearcHistory>() {
-        override fun areItemsTheSame(oldItem: ItemViewModelSearcHistory, newItem: ItemViewModelSearcHistory): Boolean {
+        override fun areItemsTheSame(
+            oldItem: ItemViewModelSearcHistory,
+            newItem: ItemViewModelSearcHistory
+        ): Boolean {
             return newItem.data.id == oldItem.data.id
         }
 
@@ -75,11 +78,10 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
         useCaseGetSearchHistory.execute(Unit)
             .life(this)
             .subscribe {
-                items.postValue(
-                    it.map { item ->
-                        ItemViewModelSearcHistory(this, item)
-                    }
-                )
+                items.value = it.map { item ->
+                    ItemViewModelSearcHistory(this, item)
+                }
+                items
             }
     }
 

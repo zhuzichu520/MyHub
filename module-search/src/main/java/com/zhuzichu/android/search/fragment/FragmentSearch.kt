@@ -29,11 +29,6 @@ class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgD
         initRecyclerView()
     }
 
-    override fun initLazyData() {
-        super.initLazyData()
-        viewModel.updateSearchHistory()
-    }
-
     private fun initRecyclerView() {
         recycler.layoutManager = FlexboxLayoutManager(context).apply {
             justifyContent = JustifyContent.FLEX_START
@@ -47,6 +42,11 @@ class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgD
             .setOnClickListener {
                 back()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.updateSearchHistory()
     }
 
 }

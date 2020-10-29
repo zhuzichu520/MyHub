@@ -63,7 +63,7 @@ object Versions {
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.0.10"
+    const val DEVELOPER = "3.0.12"
 
     const val COIL = "0.13.0"
 
