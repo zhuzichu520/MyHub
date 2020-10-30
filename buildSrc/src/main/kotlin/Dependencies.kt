@@ -5,11 +5,6 @@
  * since: v 1.0.0
  */
 
-object Dcendents {
-    const val GROUP = "com.zhuzichu.android"
-    const val VERSION = "3.0.0"
-}
-
 /**
  * 依赖版本
  */
@@ -63,7 +58,7 @@ object Versions {
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.0.12"
+    const val DEVELOPER = "3.1.1"
 
     const val COIL = "0.13.0"
 

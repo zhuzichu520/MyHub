@@ -1,6 +1,5 @@
 package com.zhuzichu.android.search.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.DiffUtil
@@ -11,7 +10,6 @@ import com.zhuzichu.android.search.R
 import com.zhuzichu.android.search.BR
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.db.daoHistory
-import com.zhuzichu.android.shared.domain.UseCaseGetSearchHistory
 import com.zhuzichu.android.shared.domain.UseCaseUpdateSearchHistory
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
 import com.zhuzichu.android.shared.entity.data.DataSearchHistory
@@ -25,15 +23,16 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
         UseCaseUpdateSearchHistory()
     }
 
-    private val useCaseGetSearchHistory by lazy {
-        UseCaseGetSearchHistory()
-    }
-
     val android = "Android"
 
     val hint = MutableLiveData(android)
 
-    val items = MutableLiveData<List<ItemViewModelSearcHistory>>()
+
+    val items = Transformations.map(daoHistory().selectList()) {
+        it.map { item ->
+            ItemViewModelSearcHistory(this, item)
+        }
+    }
 
     val diff = object : DiffUtil.ItemCallback<ItemViewModelSearcHistory>() {
         override fun areItemsTheSame(
@@ -71,17 +70,6 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
             .life(this)
             .subscribe {
                 navigate(RoutePath.Search.FRAGMENT_SEARCH_RESULT, ArgSearch(keyword))
-            }
-    }
-
-    fun updateSearchHistory() {
-        useCaseGetSearchHistory.execute(Unit)
-            .life(this)
-            .subscribe {
-                items.value = it.map { item ->
-                    ItemViewModelSearcHistory(this, item)
-                }
-                items
             }
     }
 

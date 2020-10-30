@@ -21,7 +21,7 @@ interface DaoHistory {
     fun addSearchHistory(vararg datas: DataSearchHistory): LongArray
 
     @Query("SELECT * FROM DataSearchHistory ORDER BY date DESC")
-    fun selectList(): List<DataSearchHistory>
+    fun selectList(): LiveData<List<DataSearchHistory>>
 
     @Query("SELECT * FROM DataSearchHistory WHERE name=:name")
     fun selectSearchHistoryByName(name: String?): List<DataSearchHistory>

@@ -5,7 +5,6 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.hiwitech.android.libs.internal.MainHandler
 import com.hiwitech.android.mvvm.base.ArgDefault
 import com.zhuzichu.android.search.R
 import com.zhuzichu.android.search.BR
@@ -42,11 +41,6 @@ class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgD
             .setOnClickListener {
                 back()
             }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.updateSearchHistory()
     }
 
 }
