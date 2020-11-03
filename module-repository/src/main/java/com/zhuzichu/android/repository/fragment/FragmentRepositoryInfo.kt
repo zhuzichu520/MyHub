@@ -28,7 +28,6 @@ import com.zhuzichu.android.repository.databinding.FragmentRepositoryInfoBinding
 import com.zhuzichu.android.repository.viewmodel.ShareViewModel
 import com.zhuzichu.android.repository.viewmodel.ViewModelRepositoryInfo
 import com.zhuzichu.android.shared.base.FragmentBase
-import com.zhuzichu.android.shared.domain.UseCaseGetReadme
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
 import com.zhuzichu.android.shared.html.showLoading
