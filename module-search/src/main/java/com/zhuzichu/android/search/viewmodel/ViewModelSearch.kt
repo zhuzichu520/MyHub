@@ -1,5 +1,6 @@
 package com.zhuzichu.android.search.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.recyclerview.widget.DiffUtil
@@ -10,9 +11,11 @@ import com.zhuzichu.android.search.R
 import com.zhuzichu.android.search.BR
 import com.zhuzichu.android.shared.base.ViewModelBase
 import com.zhuzichu.android.shared.db.daoHistory
+import com.zhuzichu.android.shared.domain.UseCaseDeleteSearchHistory
 import com.zhuzichu.android.shared.domain.UseCaseUpdateSearchHistory
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
 import com.zhuzichu.android.shared.entity.data.DataSearchHistory
+import com.zhuzichu.android.shared.ext.autoLoading
 import com.zhuzichu.android.shared.ext.diffEquals
 import com.zhuzichu.android.shared.ext.itemBindingOf
 import com.zhuzichu.android.shared.route.RoutePath
@@ -23,16 +26,20 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
         UseCaseUpdateSearchHistory()
     }
 
+    private val useCaseDeleteSearchHistory by lazy {
+        UseCaseDeleteSearchHistory()
+    }
+
     val android = "Android"
 
     val hint = MutableLiveData(android)
 
-
-    val items = Transformations.map(daoHistory().selectList()) {
-        it.map { item ->
-            ItemViewModelSearcHistory(this, item)
+    val items: LiveData<List<ItemViewModelSearcHistory>> =
+        Transformations.map(daoHistory().selectList()) {
+            it.map { item ->
+                ItemViewModelSearcHistory(this, item)
+            }
         }
-    }
 
     val diff = object : DiffUtil.ItemCallback<ItemViewModelSearcHistory>() {
         override fun areItemsTheSame(
@@ -73,4 +80,16 @@ class ViewModelSearch : ViewModelBase<ArgDefault>() {
             }
     }
 
+    /**
+     * 清空历史记录
+     */
+    val onDeleteCommand = createCommand {
+        items.value?.let {
+            useCaseDeleteSearchHistory.execute(it.map { item ->
+                item.data
+            }).autoLoading(this).life(this).subscribe {
+
+            }
+        }
+    }
 }

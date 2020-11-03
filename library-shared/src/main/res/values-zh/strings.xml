@@ -62,4 +62,9 @@
     <string name="watchers">版本库分支</string>
     <string name="forks">关注者</string>
 
+    <string name="tips">提示</string>
+    <string name="cancel">取消</string>
+    <string name="logout_tips">确定要退出账号么？</string>
+    <string name="ok">确认</string>
+
 </resources>

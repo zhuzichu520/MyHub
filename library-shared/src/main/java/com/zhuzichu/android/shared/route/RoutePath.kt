@@ -46,4 +46,9 @@ object RoutePath {
         const val FRAGMENT_SEARCH_RESULT = "/search/fragment/result"
     }
 
+    object Viewer{
+        const val ACTIVITY_VIEWER_MAIN = "/viewer/activity/main"
+        const val FRAGMENT_VIEWER_MAIN = "/viewer/fragment/main"
+    }
+
 }

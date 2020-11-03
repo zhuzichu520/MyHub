@@ -22,7 +22,6 @@ import com.hiwitech.android.libs.tool.toLong
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopAreaBehavior
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopDelegateLayout
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
-import com.rxjava.rxlife.life
 import com.zhuzichu.android.repository.BR
 import com.zhuzichu.android.repository.R
 import com.zhuzichu.android.repository.databinding.FragmentRepositoryInfoBinding
@@ -32,7 +31,8 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.domain.UseCaseGetReadme
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
-import com.zhuzichu.android.shared.entity.param.ParamGetReadme
+import com.zhuzichu.android.shared.html.showLoading
+import com.zhuzichu.android.shared.html.showMarkdown
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.skin.SkinManager
 import com.zhuzichu.android.shared.view.XWebView
@@ -77,11 +77,6 @@ class FragmentRepositoryInfo :
 
     private lateinit var watchers: TextView
 
-
-    private val useCaseGetReadme by lazy {
-        UseCaseGetReadme()
-    }
-
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_repository_info
@@ -90,6 +85,12 @@ class FragmentRepositoryInfo :
         super.initView()
         initHeader()
         initWebView()
+        updateTitle(arg.name)
+    }
+
+    override fun initLazyData() {
+        super.initLazyData()
+        viewModel.loadMarkdown()
     }
 
     override fun initViewObservable() {
@@ -108,9 +109,13 @@ class FragmentRepositoryInfo :
             watchers.text = it.watchers.toString()
         }
 
+        viewModel.data.observe(viewLifecycleOwner) {
+            webView.showMarkdown(it)
+        }
+
         SkinManager.onSkinChangeListener.observe(viewLifecycleOwner) {
-            val method = "loadStyle(`${getMarkDownCss()}`)"
-            webView.evaluateJavascript(method) {
+            viewModel.data.value?.let { markdown ->
+                webView.showMarkdown(markdown)
             }
         }
     }
@@ -149,67 +154,7 @@ class FragmentRepositoryInfo :
         webView.webViewClient = getWebViewClient()
         webView.requestFocus(View.FOCUS_DOWN)
         setZoomControlGone(webView)
-        loadReadMe()
-    }
-
-    private fun getMarkDownCss(): String {
-        return if (SkinManager.isDark())
-            "file:///android_asset/css/markdown_dark.css"
-        else
-            "file:///android_asset/css/markdown.css"
-    }
-
-    private fun loadReadMe() {
-        val html =
-            """
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                    <title>${arg.name}</title>
-                    <style>
-                    </style>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <link id="markdown" rel="stylesheet" type="text/css" href="${getMarkDownCss()}">
-                    <link rel="stylesheet" type="text/css" href="file:///android_asset/css/loading.css">
-                    <script>
-                    function replaceBody(body){
-                    window.document.body.innerHTML = body
-                    }
-                    function loadStyle(url){
-                    var link = document.getElementById('markdown');
-                    link.href = url;
-                    }
-                    </script>
-                    </head>
-                    <body>
-                    <div class="loading">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    </div>
-                    </body>
-                    </html>
-            """
-        webView.loadDataWithBaseURL(
-            "file:///android_asset/css/",
-            html,
-            "text/html",
-            "UTF-8",
-            null
-        )//这种写法可以正确解码
-        useCaseGetReadme.execute(
-            ParamGetReadme(
-                arg.login.toString(),
-                arg.name.toString()
-            )
-        ).life(viewModel).subscribe {
-            val method = "replaceBody(`${it}`)"
-            webView.evaluateJavascript(method) {
-            }
-        }
+        webView.showLoading()
     }
 
     private fun getWebViewChromeClient(): WebChromeClient {
@@ -222,7 +167,6 @@ class FragmentRepositoryInfo :
             false
         )
     }
-
 
     @Suppress("DEPRECATION")
     private fun setZoomControlGone(webView: WebView) {
@@ -270,7 +214,6 @@ class FragmentRepositoryInfo :
         QMUIWebViewClient(needDispatchSafeAreaInset, true) {
         override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             super.onPageStarted(view, url, favicon)
-            fragment.updateTitle(view.title)
             if (fragment.progressHandler.dstProgressIndex == 0) {
                 fragment.sendProgressMessage(
                     PROGRESS_PROCESS,
@@ -287,10 +230,12 @@ class FragmentRepositoryInfo :
                 100,
                 0
             )
-            fragment.updateTitle(view.title)
         }
 
-        override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+        override fun shouldOverrideUrlLoading(
+            view: WebView?,
+            request: WebResourceRequest?
+        ): Boolean {
             request?.url?.let {
                 fragment.navigate(RoutePath.Web.ACTIVITY_WEB_MAIN, ArgWeb(it.toString(), "blank"))
                 return true
@@ -311,11 +256,6 @@ class FragmentRepositoryInfo :
                     100
                 )
             }
-        }
-
-        override fun onReceivedTitle(view: WebView, title: String) {
-            super.onReceivedTitle(view, title)
-            fragment.updateTitle(view.title)
         }
 
         override fun onShowCustomView(view: View, callback: CustomViewCallback) {

@@ -61,4 +61,9 @@
     <string name="watchers">Watchers</string>
     <string name="forks">Forks</string>
 
+    <string name="tips">Tips</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout_tips">Are you sure you want to exit the account？</string>
+    <string name="ok">OK</string>
+
 </resources>

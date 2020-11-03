@@ -70,16 +70,31 @@
                 android:text="@string/search"
                 app:onClickCommand="@{viewModel.onClickCommand}" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="6dp"
-                android:text="@string/search_history"
-                android:textColor="?attr/app_skin_color_font_primary"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:qmui_skin_text_color="attr/app_skin_color_font_primary" />
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/search_history"
+                    android:textColor="?attr/app_skin_color_font_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:qmui_skin_text_color="attr/app_skin_color_font_primary" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete"
+                    app:onClickCommand="@{viewModel.onDeleteCommand}"/>
+
+            </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"

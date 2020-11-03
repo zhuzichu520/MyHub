@@ -12,5 +12,6 @@ include(
     "module-setting",
     "module-web",
     "module-repository",
-    "module-search"
+    "module-search",
+    "module-viewer"
 )

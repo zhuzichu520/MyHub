@@ -20,4 +20,9 @@ class FragmentRepositoryFile :
 
     override fun setLayoutId(): Int = R.layout.fragment_repository_file
 
+    override fun initLazyData() {
+        super.initLazyData()
+        viewModel.loadData()
+    }
+
 }

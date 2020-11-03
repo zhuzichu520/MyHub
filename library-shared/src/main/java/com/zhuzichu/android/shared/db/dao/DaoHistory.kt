@@ -1,10 +1,7 @@
 package com.zhuzichu.android.shared.db.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.zhuzichu.android.shared.entity.data.DataSearchHistory
 
 /**
@@ -25,5 +22,8 @@ interface DaoHistory {
 
     @Query("SELECT * FROM DataSearchHistory WHERE name=:name")
     fun selectSearchHistoryByName(name: String?): List<DataSearchHistory>
+
+    @Delete
+    fun deleteSearchHitory(datas: List<DataSearchHistory>)
 
 }

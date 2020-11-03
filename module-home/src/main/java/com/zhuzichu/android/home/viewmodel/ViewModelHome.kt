@@ -27,11 +27,11 @@ class ViewModelHome : ViewModelBase<ArgDefault>() {
         UseCaseSearchRepositories()
     }
 
-    val emptyStatus = MutableLiveData(EnumEmptyStatus.LOADING)
-
     val items = MutableLiveData<List<ItemViewModelRepository>>()
 
     val itemBinding = itemBindingOf<ItemViewModelRepository>(BR.item, R.layout.item_repository)
+
+    val emptyStatus = MutableLiveData(EnumEmptyStatus.LOADING)
 
     val emptyErrorCommand = createCommand {
         emptyStatus.value = EnumEmptyStatus.LOADING
