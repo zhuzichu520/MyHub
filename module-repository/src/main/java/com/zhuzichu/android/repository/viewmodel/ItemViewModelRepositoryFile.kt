@@ -21,7 +21,8 @@ import com.zhuzichu.android.shared.route.RoutePath
  */
 class ItemViewModelRepositoryFile(
     viewModel: BaseViewModel<*>,
-    bean: BeanFile
+    bean: BeanFile,
+    onClickDirListener: ((BeanFile) -> Unit)? = null
 ) : BaseItemViewModel(viewModel) {
 
     val icon = MutableLiveData<Int>().apply {
@@ -46,6 +47,14 @@ class ItemViewModelRepositoryFile(
         }
     }
 
+    val visibilityArrow = MutableLiveData<Int>().apply {
+        value = if (bean.type == EnumFileType.DIR) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
     val size = MutableLiveData<String>().apply {
         value = byteCountToDisplaySizeTwo(toLong(bean.size))
     }
@@ -55,8 +64,17 @@ class ItemViewModelRepositoryFile(
     }
 
     val onClickCommand = createCommand {
-        navigate(RoutePath.Viewer.ACTIVITY_VIEWER_MAIN, ArgViewer(bean.url.toString(), bean.name))
+        when (bean.type) {
+            EnumFileType.DIR -> {
+                onClickDirListener?.invoke(bean)
+            }
+            EnumFileType.FILE -> {
+                navigate(
+                    RoutePath.Viewer.ACTIVITY_VIEWER_MAIN,
+                    ArgViewer(bean.url.toString(), bean.name)
+                )
+            }
+        }
     }
-
 
 }

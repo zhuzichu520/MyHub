@@ -7,5 +7,5 @@ package com.zhuzichu.android.shared.entity.enumeration
  * since: v 1.0.0
  */
 enum class EnumEmptyStatus {
-    SUCCESS, LOADING, ERROR
+    SUCCESS, LOADING, ERROR, EMPTY
 }

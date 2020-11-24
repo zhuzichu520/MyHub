@@ -5,7 +5,19 @@
         <activity
             android:name=".ActivityLogin"
             android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="login"
+                    android:scheme="myhub" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

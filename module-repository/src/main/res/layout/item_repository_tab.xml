@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.zhuzichu.android.repository.viewmodel.ItemViewModelRepositoryTab" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:onClickCommand="@{item.onClickCommand}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/qmui_icon_quick_action_more_arrow_right"
+            android:drawablePadding="10dp"
+            android:ellipsize="middle"
+            android:gravity="center"
+            android:maxEms="12"
+            android:paddingStart="1dp"
+            android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:text="@{item.name}"
+            android:textAllCaps="false"
+            android:textColor="?attr/app_skin_color_font_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:qmui_skin_text_compound_tint_color="?attr/app_skin_color_font_primary"
+            tools:text="SD 存储卡SD 存储卡SD 存储卡SD 存储卡" />
+
+    </LinearLayout>
+
+</layout>

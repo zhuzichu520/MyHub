@@ -66,5 +66,9 @@
     <string name="cancel">取消</string>
     <string name="logout_tips">确定要退出账号么？</string>
     <string name="ok">确认</string>
+    <string name="delete_all_trace_tips">确定要删除所有足迹么？</string>
+    <string name="empty_desc_title">空空如也</string>
+
+    <string name="login_in_browser">在浏览器中登录</string>
 
 </resources>

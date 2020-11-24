@@ -1,6 +1,5 @@
 package com.zhuzichu.android.shared.base
 
-import android.content.res.Configuration
 import android.os.Bundle
 import com.hiwitech.android.mvvm.base.BaseActivity
 import com.qmuiteam.qmui.skin.QMUISkinManager

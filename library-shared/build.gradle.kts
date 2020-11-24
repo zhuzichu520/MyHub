@@ -134,14 +134,18 @@ dependencies {
     api(MyLibs.DEVELOPER_MVVM)
     api(MyLibs.DEVELOPER_WIDGET)
 
+    api(UmSdkLibs.UMSDK_ASMS)
+    api(UmSdkLibs.UMSDK_COMMON)
+    api(UmSdkLibs.UMSDK_CRASH)
+
 //    api(project(":library-libs"))
 //    api(project(":library-widget"))
 //    api(project(":library-mvvm"))
 
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
-    androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
-    testImplementation(TestingLib.JUNIT)
+    androidTestImplementation(AndroidTestingLibs.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(AndroidTestingLibs.ANDROIDX_TEST_RULES)
+    androidTestImplementation(AndroidTestingLibs.ANDROIDX_TEST_RUNNER)
+    androidTestImplementation(AndroidTestingLibs.ESPRESSO_CORE)
+    testImplementation(TestingLibs.JUNIT)
 
 }

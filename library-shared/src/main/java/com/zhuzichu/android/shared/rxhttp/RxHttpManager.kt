@@ -42,8 +42,9 @@ class RxHttpManager(
         //设置缓存策略，非必须
         RxHttpPlugins.setCache(
             File(CacheGlobal.getHttpCacheDir()),
-            1000 * 100,
-            CacheMode.REQUEST_NETWORK_FAILED_READ_CACHE
+            100 * 1024 * 1024,
+            CacheMode.REQUEST_NETWORK_FAILED_READ_CACHE,
+            15 * 24 * 60 * 60 * 1000
         )
         RxHttpPlugins.setExcludeCacheKeys("time") //设置一些key，不参与cacheKey的组拼
         //设置数据解密/解码器，非必须
@@ -71,7 +72,8 @@ class RxHttpManager(
 
             }
             AppStorage.token?.let {
-                param.addHeader("Authorization", it) //添加公共请求头
+                val auth = if (it.startsWith("Basic")) it else "token $it"
+                param.addHeader("Authorization", auth) //添加公共请求头
             }
             param
         }

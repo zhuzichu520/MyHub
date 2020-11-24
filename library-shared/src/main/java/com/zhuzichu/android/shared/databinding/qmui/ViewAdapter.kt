@@ -58,6 +58,12 @@ fun bindQMUIEmptyView(
         EnumEmptyStatus.LOADING -> {
             emptyView.show(true)
         }
+        EnumEmptyStatus.EMPTY -> {
+            emptyView.show(
+                R.string.empty_desc_title.toStringByResId(emptyView.context),
+                null
+            )
+        }
         else -> {
             emptyView.hide()
         }

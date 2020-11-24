@@ -58,7 +58,7 @@ object Versions {
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.1.1"
+    const val DEVELOPER = "3.1.2"
 
     const val COIL = "0.13.0"
 
@@ -70,6 +70,11 @@ object Versions {
 
     const val PAGING = "2.1.2"
 
+    const val UMSDK_COMMON = "9.3.0"
+
+    const val UMSDK_ASMS = "1.1.3"
+
+    const val UMSDK_CRASH = "0.0.4"
 }
 
 
@@ -86,7 +91,7 @@ object BuildPluginsVersion {
 }
 
 /**
- *
+ * 插件库
  */
 object ClassPaths {
     const val androidBuildTools = "com.android.tools.build:gradle:${BuildPluginsVersion.AGP}"
@@ -120,18 +125,27 @@ object SupportLibs {
 /**
  * 测试库
  */
-object TestingLib {
+object TestingLibs {
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
 }
 
 /**
  * Android测试库
  */
-object AndroidTestingLib {
+object AndroidTestingLibs {
     const val ANDROIDX_TEST_RULES = "androidx.test:rules:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
     const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+}
+
+/**
+ * 友盟SDK
+ */
+object UmSdkLibs {
+    const val UMSDK_COMMON = "com.umeng.umsdk:common:${Versions.UMSDK_COMMON}"
+    const val UMSDK_ASMS = "com.umeng.umsdk:asms:${Versions.UMSDK_ASMS}"
+    const val UMSDK_CRASH = "com.umeng.umsdk:crash:${Versions.UMSDK_CRASH}"
 }
 
 /**
@@ -226,6 +240,9 @@ object Kapts {
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
 }
 
+/**
+ * 个人库
+ */
 object MyLibs {
     const val DEVELOPER_WIDGET =
         "com.github.zhuzichu520.Developer:library-widget:${Versions.DEVELOPER}"

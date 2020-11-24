@@ -2,6 +2,11 @@ package com.zhuzichu.android.shared.route
 
 object RoutePath {
 
+    object Launcher {
+        const val ACTIVITY_LAUNCHER_MAIN = "/launcher/activity/main"
+        const val FRAGMENT_LAUNCHER_MAIN = "/launcher/fragment/main"
+    }
+
     object Login {
         const val ACTIVITY_LOGIN_MAIN = "/login/activity/main"
         const val FRAGMENT_LOGIN_MAIN = "/login/fragment/main"

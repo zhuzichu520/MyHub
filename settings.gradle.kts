@@ -13,5 +13,6 @@ include(
     "module-web",
     "module-repository",
     "module-search",
-    "module-viewer"
+    "module-viewer",
+    "module-launcher"
 )

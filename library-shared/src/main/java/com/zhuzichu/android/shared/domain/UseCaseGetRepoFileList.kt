@@ -24,7 +24,7 @@ class UseCaseGetRepoFileList : UseCase<ParamFileList, Observable<List<BeanFile>>
                 parameters.repo,
                 parameters.path
             )
-            .add("ref", parameters.owner)
+            .add("ref", parameters.ref)
             .asList(BeanFile::class.java)
             .map {
                 it.sortWith { o1, o2 ->

@@ -76,6 +76,9 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
 -keep public class * extends android.view.View{
     *** get*();
     void set*(***);
@@ -160,3 +163,12 @@
 
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 # -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+
+#---------------------------------友盟-----------------------------------
+-keep class com.umeng.** {*;}
+-keep class com.uc.** {*;}
+-keep class com.zui.** {*;}
+-keep class com.miui.** {*;}
+-keep class com.heytap.** {*;}
+-keep class a.** {*;}
+-keep class com.vivo.** {*;}

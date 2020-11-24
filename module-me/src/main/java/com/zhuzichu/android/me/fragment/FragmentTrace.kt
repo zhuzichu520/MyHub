@@ -2,6 +2,9 @@ package com.zhuzichu.android.me.fragment
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.mvvm.base.ArgDefault
+import com.qmuiteam.qmui.skin.QMUISkinManager
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.qmuiteam.qmui.widget.pullLayout.QMUIPullLayout
 import com.zhuzichu.android.me.R
 import com.zhuzichu.android.me.BR
@@ -28,6 +31,24 @@ class FragmentTrace : FragmentBase<FragmentTraceBinding, ViewModelTrace, ArgDefa
             .setOnClickListener {
                 back()
             }
+
+        topbar.addRightImageButton(R.drawable.ic_delete, R.id.topbar_right_delete_button)
+            .setOnClickListener {
+                showDeleteDialog()
+            }
+
+    }
+
+    private fun showDeleteDialog() {
+        QMUIDialog.MessageDialogBuilder(requireContext())
+            .setTitle(R.string.tips)
+            .setMessage(R.string.delete_all_trace_tips)
+            .setSkinManager(QMUISkinManager.defaultInstance(context))
+            .addAction(R.string.cancel) { dialog, _ -> dialog.dismiss() }
+            .addAction(0, R.string.ok, QMUIDialogAction.ACTION_PROP_NEGATIVE) { dialog, _ ->
+                viewModel.deleteAllTrace()
+                dialog.dismiss()
+            }.create(R.style.MyTheme_QMUI_Dialog).show()
     }
 
     override fun initListener() {

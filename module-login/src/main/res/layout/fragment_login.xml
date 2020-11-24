@@ -26,7 +26,8 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="15dp"
-                android:src="@mipmap/ic_login_logo" />
+                android:src="@mipmap/ic_login_logo"
+                app:qmui_skin_tint_color="?attr/app_skin_color_font_primary" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -36,9 +37,9 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/username"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/username"
@@ -53,8 +54,8 @@
                 android:paddingBottom="6dp"
                 android:singleLine="true"
                 android:text="@={viewModel.username}"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -64,9 +65,9 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
                 android:text="@string/password"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_primary"
                 android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_primary" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/password"
@@ -81,8 +82,8 @@
                 android:paddingBottom="6dp"
                 android:singleLine="true"
                 android:text="@={viewModel.password}"
-                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:qmui_skin_text_color="?attr/app_skin_color_font_secondary" />
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                 android:id="@+id/login"
@@ -92,11 +93,20 @@
                 android:layout_marginTop="25dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                app:qmuiAlphaWhenPress="@{true}"
                 android:text="@string/login"
                 android:textAppearance="?attr/textAppearanceButton"
                 app:onClickCommand="@{viewModel.onClickLoginCommand}"
+                app:qmuiAlphaWhenPress="@{true}"
                 app:qmui_isRadiusAdjustBounds="true" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/login_in_browser"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                app:onClickCommand="@{viewModel.onClickBrowserCommand}" />
 
         </LinearLayout>
 

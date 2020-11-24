@@ -17,4 +17,6 @@
         application="com.zhuzichu.android.search.ApplicationSearch" />
     <module name="module-viewer" app="false"
         application="com.zhuzichu.android.viewer.ApplicationViewer" />
+    <module name="module-launcher" app="false"
+        application="com.zhuzichu.android.launcher.ApplicationLauncher" />
 </modules>

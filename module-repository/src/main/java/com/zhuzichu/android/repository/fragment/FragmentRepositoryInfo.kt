@@ -17,10 +17,12 @@ import android.widget.TextView
 import android.widget.ZoomButtonsController
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.activityViewModels
+import com.hiwitech.android.libs.internal.MainHandler
 import com.hiwitech.android.libs.tool.byteCountToDisplaySizeTwo
 import com.hiwitech.android.libs.tool.toLong
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopAreaBehavior
 import com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedTopDelegateLayout
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout
 import com.qmuiteam.qmui.widget.webview.QMUIWebViewClient
 import com.zhuzichu.android.repository.BR
 import com.zhuzichu.android.repository.R
@@ -90,6 +92,24 @@ class FragmentRepositoryInfo :
     override fun initLazyData() {
         super.initLazyData()
         viewModel.loadMarkdown()
+    }
+
+    override fun initListener() {
+        super.initListener()
+        pull_to_refresh.setOnPullListener(object : QMUIPullRefreshLayout.OnPullListener {
+            override fun onMoveTarget(offset: Int) {
+
+            }
+
+            override fun onMoveRefreshView(offset: Int) {
+            }
+
+            override fun onRefresh() {
+                MainHandler.postDelayed {
+                    pull_to_refresh.finishRefresh()
+                }
+            }
+        })
     }
 
     override fun initViewObservable() {

@@ -4,4 +4,5 @@
     <item name="topbar_right_search_button" type="id" />
     <item name="topbar_left_back_button" type="id" />
     <item name="topbar_right_menu_button" type="id" />
+    <item name="topbar_right_delete_button" type="id" />
 </resources>

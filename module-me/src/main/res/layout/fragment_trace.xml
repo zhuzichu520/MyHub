@@ -65,6 +65,18 @@
 
         </com.qmuiteam.qmui.widget.pullLayout.QMUIPullLayout>
 
+        <com.qmuiteam.qmui.widget.QMUIEmptyView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:qmui_skin_background="?attr/app_skin_color_background"
+            app:emptyErrorCommand="@{viewModel.emptyErrorCommand}"
+            app:emptyStatus="@{viewModel.emptyStatus}"
+            app:layout_constraintBottom_toBottomOf="@id/content"
+            app:layout_constraintEnd_toEndOf="@id/content"
+            app:layout_constraintStart_toStartOf="@id/content"
+            app:layout_constraintTop_toTopOf="@+id/content"
+            tools:background="@null" />
+
     </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2>
 
 </layout>

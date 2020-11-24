@@ -65,5 +65,9 @@
     <string name="cancel">Cancel</string>
     <string name="logout_tips">Are you sure you want to exit the account？</string>
     <string name="ok">OK</string>
+    <string name="delete_all_trace_tips">Are you sure you want to delete all trace？</string>
+    <string name="empty_desc_title">Empty</string>
+
+    <string name="login_in_browser">LOGIN WITH BROWSER</string>
 
 </resources>

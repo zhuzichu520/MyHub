@@ -113,7 +113,7 @@
                     </LinearLayout>
 
                     <View
-                        android:layout_width="0.5dp"
+                        android:layout_width="1px"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:background="?attr/app_skin_color_divider" />
@@ -145,9 +145,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="?attr/app_skin_color_divider"
-                    app:layout_constraintBottom_toTopOf="@+id/created_at" />
+                    android:layout_height="1px"
+                    app:layout_constraintBottom_toTopOf="@+id/created_at"
+                    app:qmui_skin_background="?attr/app_skin_color_divider" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/created_at"
@@ -165,9 +165,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="?attr/app_skin_color_divider"
-                    app:layout_constraintTop_toBottomOf="@+id/created_at" />
+                    android:layout_height="1px"
+                    app:layout_constraintTop_toBottomOf="@+id/created_at"
+                    app:qmui_skin_background="?attr/app_skin_color_divider" />
 
 
                 <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView

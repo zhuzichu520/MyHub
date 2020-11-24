@@ -26,6 +26,9 @@ interface DaoTrace {
     fun selectTraceByRepositoryId(id: Long?): List<DataTrace>
 
     @Query("SELECT * FROM DataTrace ORDER BY date DESC LIMIT :limit OFFSET :offset")
-    fun selectList(limit:Int,offset:Int):  List<DataTrace>
+    fun selectList(limit: Int, offset: Int): List<DataTrace>
+
+    @Query("DELETE FROM DataTrace")
+    fun deleteAll()
 
 }
