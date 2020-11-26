@@ -2,10 +2,8 @@ package com.zhuzichu.android.login.fragment
 
 import android.Manifest
 import android.content.Intent
-import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.libs.tool.jumpToSystemBrowser
-import com.hiwitech.android.libs.tool.setOnClickListener
 import com.hiwitech.android.mvvm.base.ArgDefault
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.zhuzichu.android.shared.base.FragmentBase

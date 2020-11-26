@@ -12,7 +12,6 @@ import com.zhuzichu.android.me.databinding.FragmentMeBinding
 import com.zhuzichu.android.me.viewmodel.ViewModelMe
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_me.*
 
 @Route(path = RoutePath.Me.FRAGMENT_ME_MAIN)
 class FragmentMe : FragmentBase<FragmentMeBinding, ViewModelMe, ArgDefault>() {
@@ -31,7 +30,7 @@ class FragmentMe : FragmentBase<FragmentMeBinding, ViewModelMe, ArgDefault>() {
         QMUIGroupListView.newSection(context)
             .setTitle(String())
             .addItemView(
-                group.createItemView(
+                binding.group.createItemView(
                     getDrawable(requireContext(), R.drawable.ic_trace),
                     getString(R.string.trace),
                     null,
@@ -42,13 +41,15 @@ class FragmentMe : FragmentBase<FragmentMeBinding, ViewModelMe, ArgDefault>() {
                 navigate(RoutePath.Me.FRAGMENT_ME_TRACE)
             }
             .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(context, 16), 0)
-            .addTo(group)
+            .addTo(binding.group)
     }
 
     private fun initTopBar() {
-        topbar.addRightImageButton(R.drawable.ic_topbar_setting, R.id.topbar_right_setting_button)
-            .setOnClickListener {
-                navigate(RoutePath.Setting.ACTIVITY_SETTING_MAIN)
-            }
+        binding.topbar.addRightImageButton(
+            R.drawable.ic_topbar_setting,
+            R.id.topbar_right_setting_button
+        ).setOnClickListener {
+            navigate(RoutePath.Setting.ACTIVITY_SETTING_MAIN)
+        }
     }
 }

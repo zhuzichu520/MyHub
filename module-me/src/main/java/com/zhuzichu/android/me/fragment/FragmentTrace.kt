@@ -12,7 +12,6 @@ import com.zhuzichu.android.me.databinding.FragmentTraceBinding
 import com.zhuzichu.android.me.viewmodel.ViewModelTrace
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_trace.*
 
 @Route(path = RoutePath.Me.FRAGMENT_ME_TRACE)
 class FragmentTrace : FragmentBase<FragmentTraceBinding, ViewModelTrace, ArgDefault>() {
@@ -27,12 +26,12 @@ class FragmentTrace : FragmentBase<FragmentTraceBinding, ViewModelTrace, ArgDefa
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
 
-        topbar.addRightImageButton(R.drawable.ic_delete, R.id.topbar_right_delete_button)
+        binding.topbar.addRightImageButton(R.drawable.ic_delete, R.id.topbar_right_delete_button)
             .setOnClickListener {
                 showDeleteDialog()
             }
@@ -53,17 +52,17 @@ class FragmentTrace : FragmentBase<FragmentTraceBinding, ViewModelTrace, ArgDefa
 
     override fun initListener() {
         super.initListener()
-        content.setActionListener { action ->
+        binding.content.setActionListener { action ->
             when (action.pullEdge) {
                 QMUIPullLayout.PULL_EDGE_TOP -> {
                     viewModel.page = 1
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
                 QMUIPullLayout.PULL_EDGE_BOTTOM -> {
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
             }

@@ -10,10 +10,7 @@ import com.zhuzichu.android.setting.databinding.FragmentSettingAboutBinding
 import com.zhuzichu.android.setting.viewmodel.ViewModelSettingAbout
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgWeb
-import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_setting.topbar
-import kotlinx.android.synthetic.main.fragment_setting_about.*
 
 @Route(path = RoutePath.Setting.FRAGMENT_SETTING_ABOUT)
 class FragmentSettingAbout :
@@ -31,7 +28,7 @@ class FragmentSettingAbout :
 
         //github
         val titleGithub = getString(R.string.github)
-        val itemGithub = about_list.createItemView(titleGithub)
+        val itemGithub = binding.aboutList.createItemView(titleGithub)
         QMUIGroupListView.newSection(context)
             .addItemView(itemGithub) {
                 val url = "https://github.com/zhuzichu520/MyHub"
@@ -40,11 +37,11 @@ class FragmentSettingAbout :
                     ArgWeb(url, titleGithub)
                 )
             }
-            .addTo(about_list)
+            .addTo(binding.aboutList)
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }

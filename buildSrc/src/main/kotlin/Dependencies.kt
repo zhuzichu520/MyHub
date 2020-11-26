@@ -53,12 +53,13 @@ object Versions {
 
     const val GSON = "2.8.6"
 
-    const val AROUTE_API = "1.5.0"
-    const val AROUTE_COMPILER = "1.2.2"
+    const val AROUTE_API = "1.5.1"
+
+    const val AROUTE_COMPILER = "1.5.1"
 
     const val QMUI = "2.0.0-alpha10"
 
-    const val DEVELOPER = "3.1.2"
+    const val DEVELOPER = "3.1.5"
 
     const val COIL = "0.13.0"
 
@@ -82,9 +83,9 @@ object Versions {
  * 插件版本
  */
 object BuildPluginsVersion {
-    const val AGP = "4.2.0-alpha13"
+    const val AGP = "4.2.0-alpha16"
     const val DETEKT = "1.7.4"
-    const val KOTLIN = "1.4.10"
+    const val KOTLIN = "1.4.20"
     const val KTLINT = "9.2.1"
     const val VERSIONS_PLUGIN = "0.29.0"
     const val ANDROID_MAVEN = "2.1"

@@ -2,9 +2,8 @@ package com.zhuzichu.android.shared.entity.bean
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class BeanRepository(
     @SerializedName("id")
     var id: Long? = null,
@@ -150,4 +149,4 @@ data class BeanRepository(
     var defaultBranch: String? = null,
     @SerializedName("score")
     var score: Double? = null
-) : Parcelable
+) : Serializable

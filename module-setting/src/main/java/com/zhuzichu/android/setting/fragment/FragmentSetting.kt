@@ -1,7 +1,6 @@
 package com.zhuzichu.android.setting.fragment
 
 import android.view.View
-import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.libs.tool.setOnClickListener
 import com.hiwitech.android.mvvm.base.ArgDefault
@@ -19,7 +18,6 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgMain
 import com.zhuzichu.android.shared.entity.enumeration.EnumMainType
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_setting.*
 
 @Route(path = RoutePath.Setting.FRAGMENT_SETTING_MAIN)
 class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, ArgDefault>(),
@@ -35,30 +33,30 @@ class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, A
         QMUIGroupListView.newSection(context)
             .setTitle(String())
             .addItemView(
-                setting_list.createItemView(resources.getString(R.string.about))
+                binding.settingList.createItemView(resources.getString(R.string.about))
                     .apply {
                         accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
                     }) {
                 navigate(RoutePath.Setting.FRAGMENT_SETTING_ABOUT)
             }
             .addItemView(
-                setting_list.createItemView(resources.getString(R.string.settings_theme_title))
+                binding.settingList.createItemView(resources.getString(R.string.settings_theme_title))
                     .apply {
                         accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON
                     }) {
                 navigate(RoutePath.Setting.FRAGMENT_SETTING_THEME)
             }
             .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(context, 16), 0)
-            .addTo(setting_list)
+            .addTo(binding.settingList)
     }
 
     override fun initListener() {
         super.initListener()
-        setOnClickListener(this, logout)
+        setOnClickListener(this, binding.logout)
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
@@ -66,7 +64,7 @@ class FragmentSetting : FragmentBase<FragmentSettingBinding, ViewModelSetting, A
 
     override fun onClick(view: View) {
         when (view) {
-            logout -> {
+            binding.logout -> {
                 showLogoutDialog()
             }
             else -> {

@@ -10,8 +10,9 @@ import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
+import com.android.build.api.dsl.ApplicationBuildFeatures
 
 /**
  * desc
@@ -35,11 +36,10 @@ class InitModule(private val project: Project) {
                 Log.l(project.name, "不是主module")
             }
             plugin("org.jetbrains.kotlin.android")
-            plugin("org.jetbrains.kotlin.android.extensions")
             plugin("org.jetbrains.kotlin.kapt")
         }
 
-        project.extensions.getByType(KaptExtension::class.java).apply {
+        project.extensions.getByType(KaptExtension::class).apply {
             this.arguments {
                 arg("AROUTER_MODULE_NAME", project.name)
                 arg("AROUTER_GENERATE_DOC", "enable")
@@ -57,11 +57,6 @@ class InitModule(private val project: Project) {
             add("api", project(mapOf("path" to ":library-shared")))
             add("kapt", Kapts.AROUTER_COMPILER)
             add("kapt", Kapts.QMUI_ARCH_COMPILER)
-            add("androidTestImplementation", AndroidTestingLibs.ANDROIDX_TEST_EXT_JUNIT)
-            add("androidTestImplementation", AndroidTestingLibs.ANDROIDX_TEST_RULES)
-            add("androidTestImplementation", AndroidTestingLibs.ANDROIDX_TEST_RUNNER)
-            add("androidTestImplementation", AndroidTestingLibs.ESPRESSO_CORE)
-            add("testImplementation", TestingLibs.JUNIT)
         }
 
     }
@@ -70,7 +65,7 @@ class InitModule(private val project: Project) {
      * 初始化Module是Application的
      */
     private fun initApplication() {
-        project.extensions.getByType(AppExtension::class.java).apply {
+        project.extensions.getByType(AppExtension::class).apply {
 
             compileSdkVersion(Config.compileSdkVersion())
 
@@ -97,16 +92,10 @@ class InitModule(private val project: Project) {
             }
 
             val kotlinJvmOptions =
-                (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class.java)
+                (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class)
             kotlinJvmOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
-            dataBinding {
-                isEnabled = true
-            }
-
-            val androidExtensionsExtension =
-                project.extensions.getByType(AndroidExtensionsExtension::class.java)
-            androidExtensionsExtension.isExperimental = true
+            dataBinding.isEnabled = true
 
             sourceSets["main"].apply {
                 manifest.srcFile(
@@ -120,7 +109,7 @@ class InitModule(private val project: Project) {
      * 初始化Module是Library
      */
     private fun initLibrary() {
-        project.extensions.getByType(LibraryExtension::class.java).apply {
+        project.extensions.getByType(LibraryExtension::class).apply {
 
             compileSdkVersion(Config.compileSdkVersion())
 
@@ -142,16 +131,10 @@ class InitModule(private val project: Project) {
             }
 
             val kotlinJvmOptions =
-                (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class.java)
+                (this as ExtensionAware).extensions.getByType(KotlinJvmOptions::class)
             kotlinJvmOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
-            dataBinding {
-                isEnabled = true
-            }
-
-            val androidExtensionsExtension =
-                project.extensions.getByType(AndroidExtensionsExtension::class.java)
-            androidExtensionsExtension.isExperimental = true
+            dataBinding.isEnabled = true
 
             sourceSets["main"].apply {
                 manifest.srcFile(

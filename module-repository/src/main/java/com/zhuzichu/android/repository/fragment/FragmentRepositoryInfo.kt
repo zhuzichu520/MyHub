@@ -37,7 +37,6 @@ import com.zhuzichu.android.shared.html.showMarkdown
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.skin.SkinManager
 import com.zhuzichu.android.shared.view.XWebView
-import kotlinx.android.synthetic.main.fragment_repository_info.*
 import java.lang.reflect.Field
 
 /**
@@ -96,7 +95,7 @@ class FragmentRepositoryInfo :
 
     override fun initListener() {
         super.initListener()
-        pull_to_refresh.setOnPullListener(object : QMUIPullRefreshLayout.OnPullListener {
+        binding.pullToRefresh.setOnPullListener(object : QMUIPullRefreshLayout.OnPullListener {
             override fun onMoveTarget(offset: Int) {
 
             }
@@ -106,7 +105,7 @@ class FragmentRepositoryInfo :
 
             override fun onRefresh() {
                 MainHandler.postDelayed {
-                    pull_to_refresh.finishRefresh()
+                    binding.pullToRefresh.finishRefresh()
                 }
             }
         })
@@ -140,7 +139,7 @@ class FragmentRepositoryInfo :
     }
 
     private fun initHeader() {
-        headerView = layoutInflater.inflate(R.layout.header_repository_info, coordinator, false)
+        headerView = layoutInflater.inflate(R.layout.header_repository_info, binding.coordinator, false)
         fullName = headerView.findViewById(R.id.full_name)
         description = headerView.findViewById(R.id.description)
         info = headerView.findViewById(R.id.info)
@@ -164,10 +163,10 @@ class FragmentRepositoryInfo :
             ViewGroup.LayoutParams.MATCH_PARENT
         )
         topLp.behavior = QMUIContinuousNestedTopAreaBehavior(context)
-        coordinator.setTopAreaView(topLayout, topLp)
-        coordinator.setDraggableScrollBarEnabled(true)
+        binding.coordinator.setTopAreaView(topLayout, topLp)
+        binding.coordinator.setDraggableScrollBarEnabled(true)
 
-        progressHandler = ProgressHandler(progress_bar)
+        progressHandler = ProgressHandler(binding.progressBar)
 
         webView.webChromeClient = getWebViewChromeClient()
         webView.webViewClient = getWebViewClient()

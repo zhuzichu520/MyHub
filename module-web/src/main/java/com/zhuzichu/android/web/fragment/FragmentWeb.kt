@@ -27,7 +27,6 @@ import com.zhuzichu.android.web.R
 import com.zhuzichu.android.web.databinding.FragmentWebBinding
 import com.zhuzichu.android.shared.view.XWebView
 import com.zhuzichu.android.web.viewmodel.ViewModelWeb
-import kotlinx.android.synthetic.main.fragment_web.*
 import java.lang.reflect.Field
 
 @Route(path = RoutePath.Web.FRAGMENT_WEB_MAIN)
@@ -57,7 +56,7 @@ class FragmentWeb : FragmentBase<FragmentWebBinding, ViewModelWeb, ArgWeb>() {
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
@@ -66,24 +65,24 @@ class FragmentWeb : FragmentBase<FragmentWebBinding, ViewModelWeb, ArgWeb>() {
 
     private fun initWebView() {
         webView = XWebView(requireContext())
-        progressHandler = ProgressHandler(progress_bar)
+        progressHandler = ProgressHandler(binding.progressBar)
         val needDispatchSafeAreaInset = arg.needDispatchSafeAreaInset == true
-        webview_container.addWebView(webView, needDispatchSafeAreaInset)
-        webview_container.setCustomOnScrollChangeListener { _, scrollX, scrollY, oldScrollX, oldScrollY ->
+        binding.webviewContainer.addWebView(webView, needDispatchSafeAreaInset)
+        binding.webviewContainer.setCustomOnScrollChangeListener { _, scrollX, scrollY, oldScrollX, oldScrollY ->
             onScrollWebContent(scrollX, scrollY, oldScrollX, oldScrollY)
         }
         if (needDispatchSafeAreaInset) {
-            hideView(topbar)
-            webview_container.fitsSystemWindows = true
+            hideView(binding.topbar)
+            binding.webviewContainer.fitsSystemWindows = true
         } else {
-            showView(topbar)
-            webview_container.fitsSystemWindows = false
+            showView(binding.topbar)
+            binding.webviewContainer.fitsSystemWindows = false
         }
         webView.webChromeClient = getWebViewChromeClient()
         webView.webViewClient = getWebViewClient()
         webView.requestFocus(View.FOCUS_DOWN)
         setZoomControlGone(webView)
-        configWebView(webview_container, webView)
+        configWebView(binding.webviewContainer, webView)
         webView.loadUrl(arg.url)
     }
 

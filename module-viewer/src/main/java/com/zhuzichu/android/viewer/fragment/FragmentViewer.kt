@@ -17,7 +17,6 @@ import com.zhuzichu.android.viewer.BR
 import com.zhuzichu.android.viewer.R
 import com.zhuzichu.android.viewer.databinding.FragmentViewerBinding
 import com.zhuzichu.android.viewer.viewmodel.ViewModelViewer
-import kotlinx.android.synthetic.main.fragment_viewer.*
 import java.lang.reflect.Field
 
 @Route(path = RoutePath.Viewer.FRAGMENT_VIEWER_MAIN)
@@ -64,7 +63,7 @@ class FragmentViewer : FragmentBase<FragmentViewerBinding, ViewModelViewer, ArgV
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
@@ -74,7 +73,7 @@ class FragmentViewer : FragmentBase<FragmentViewerBinding, ViewModelViewer, ArgV
     private fun initWebView() {
         webView = XWebView(requireContext())
         webView.setBackgroundColor(0)
-        webview_container.addWebView(webView, false)
+        binding.webviewContainer.addWebView(webView, false)
         webView.webChromeClient = getWebViewChromeClient()
         webView.webViewClient = getWebViewClient()
         webView.requestFocus(View.FOCUS_DOWN)

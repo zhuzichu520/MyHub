@@ -1,7 +1,6 @@
 package com.zhuzichu.android.setting.fragment
 
 import android.widget.RadioButton
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.*
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hiwitech.android.mvvm.base.ArgDefault
@@ -16,8 +15,6 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.route.RoutePath
 import com.zhuzichu.android.shared.skin.SkinManager
 import com.zhuzichu.android.shared.storage.AppStorage
-import kotlinx.android.synthetic.main.fragment_setting.topbar
-import kotlinx.android.synthetic.main.fragment_setting_theme.*
 
 @Route(path = RoutePath.Setting.FRAGMENT_SETTING_THEME)
 class FragmentSettingTheme :
@@ -58,7 +55,7 @@ class FragmentSettingTheme :
                 }
             }
             .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(context, 16), 0)
-            .addTo(theme_list)
+            .addTo(binding.themeList)
     }
 
     fun refreshButtons() {
@@ -75,7 +72,7 @@ class FragmentSettingTheme :
             }
         }
         itemViews = modes.mapIndexed { index, _ ->
-            theme_list.createItemView(resources.getString(strings[index])).apply {
+            binding.themeList.createItemView(resources.getString(strings[index])).apply {
                 accessoryType = QMUICommonListItemView.ACCESSORY_TYPE_CUSTOM
                 addAccessoryCustomView(buttons[index])
             }
@@ -83,7 +80,7 @@ class FragmentSettingTheme :
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }

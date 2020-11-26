@@ -10,7 +10,6 @@ import com.zhuzichu.android.home.databinding.FragmentHomeBinding
 import com.zhuzichu.android.home.viewmodel.ViewModelHome
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_home.*
 
 @Route(path = RoutePath.Home.FRAGMENT_HOME_MAIN)
 class FragmentHome : FragmentBase<FragmentHomeBinding, ViewModelHome, ArgDefault>() {
@@ -24,11 +23,14 @@ class FragmentHome : FragmentBase<FragmentHomeBinding, ViewModelHome, ArgDefault
         initTopBar()
         val scrollBar = QMUIRVDraggableScrollBar(0, 0, 0)
         scrollBar.isEnableScrollBarFadeInOut = true
-        scrollBar.attachToRecyclerView(recycler)
+        scrollBar.attachToRecyclerView(binding.recycler)
     }
 
     private fun initTopBar() {
-        topbar.addRightImageButton(R.drawable.ic_topbar_search, R.id.topbar_right_search_button)
+        binding.topbar.addRightImageButton(
+            R.drawable.ic_topbar_search,
+            R.id.topbar_right_search_button
+        )
             .setOnClickListener {
                 navigate(RoutePath.Search.ACTIVITY_SEARCH_MAIN)
             }
@@ -41,17 +43,17 @@ class FragmentHome : FragmentBase<FragmentHomeBinding, ViewModelHome, ArgDefault
 
     override fun initListener() {
         super.initListener()
-        content.setActionListener { action ->
+        binding.content.setActionListener { action ->
             when (action.pullEdge) {
                 QMUIPullLayout.PULL_EDGE_TOP -> {
                     viewModel.page = 1
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
                 QMUIPullLayout.PULL_EDGE_BOTTOM -> {
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
             }

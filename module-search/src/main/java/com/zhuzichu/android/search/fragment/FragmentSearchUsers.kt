@@ -10,7 +10,6 @@ import com.zhuzichu.android.search.viewmodel.ShareViewModel
 import com.zhuzichu.android.search.viewmodel.ViewModelSearchUsers
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
-import kotlinx.android.synthetic.main.fragment_search_users.*
 
 /**
  * desc
@@ -18,7 +17,8 @@ import kotlinx.android.synthetic.main.fragment_search_users.*
  * time: 2020/10/27 10:06 AM
  * since: v 1.0.0
  */
-class FragmentSearchUsers : FragmentBase<FragmentSearchUsersBinding, ViewModelSearchUsers, ArgSearch>() {
+class FragmentSearchUsers :
+    FragmentBase<FragmentSearchUsersBinding, ViewModelSearchUsers, ArgSearch>() {
 
     override fun bindVariableId(): Int = BR.viewModel
 
@@ -30,7 +30,7 @@ class FragmentSearchUsers : FragmentBase<FragmentSearchUsersBinding, ViewModelSe
         super.initView()
         val scrollBar = QMUIRVDraggableScrollBar(0, 0, 0)
         scrollBar.isEnableScrollBarFadeInOut = true
-        scrollBar.attachToRecyclerView(recycler)
+        scrollBar.attachToRecyclerView(binding.recycler)
     }
 
     override fun initArgs(arg: ArgSearch) {
@@ -55,17 +55,17 @@ class FragmentSearchUsers : FragmentBase<FragmentSearchUsersBinding, ViewModelSe
 
     override fun initListener() {
         super.initListener()
-        content.setActionListener { action ->
+        binding.content.setActionListener { action ->
             when (action.pullEdge) {
                 QMUIPullLayout.PULL_EDGE_TOP -> {
                     viewModel.page = 1
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
                 QMUIPullLayout.PULL_EDGE_BOTTOM -> {
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
             }

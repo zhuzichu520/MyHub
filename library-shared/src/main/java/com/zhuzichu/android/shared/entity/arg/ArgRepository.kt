@@ -3,7 +3,6 @@ package com.zhuzichu.android.shared.entity.arg
 import com.hiwitech.android.mvvm.base.BaseArg
 import com.zhuzichu.android.shared.entity.bean.BeanRepository
 import com.zhuzichu.android.shared.entity.data.DataTrace
-import kotlinx.android.parcel.Parcelize
 
 /**
  * desc
@@ -11,7 +10,6 @@ import kotlinx.android.parcel.Parcelize
  * time: 2020/9/28 3:30 PM
  * since: v 1.0.0
  */
-@Parcelize
 class ArgRepository(
     var id: Long? = null,
     var name: String? = null,

@@ -8,6 +8,7 @@ import module.Modules
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtraPropertiesExtension
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.getByType
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -16,6 +17,10 @@ import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 object Config {
+
+    private lateinit var parentProject: Project
+
+    private lateinit var rootPath: String
 
     private lateinit var modules: Modules
 
@@ -45,19 +50,13 @@ object Config {
         SIGN_STORE_PASSWORD("SIGN_STORE_PASSWORD");
     }
 
-    private enum class ModuleKey(val key: String) {
-        MODULE_MAIN("MODULE_MAIN")
-    }
-
-    private lateinit var parentProject: Project
-
-    private lateinit var rootPath: String
-
     @JvmStatic
     fun init(project: Project) {
         parentProject = project
+        @Suppress("MISSING_DEPENDENCY_CLASS")
         rootPath = parentProject.projectDir.toString().plus(File.separator)
         Log.init(parentProject)
+        Log.l("rootPath", rootPath)
         initModules()
     }
 
@@ -106,6 +105,10 @@ object Config {
         loadProperties(
             resourcesPath.plus("flavor-config.properties")
         )
+    }
+
+    private val moduleProperties by lazy {
+        loadProperties("module-config.properties")
     }
 
     private val configProperties by lazy {
@@ -269,7 +272,7 @@ object Config {
      */
     @JvmStatic
     fun initJenkinsProperties(project: Project) {
-        project.extensions.getByType(ExtraPropertiesExtension::class.java)
+        project.extensions.getByType(ExtraPropertiesExtension::class)
             .properties.mapKeys {
                 gradleProperties.put(it.key, project.properties[it.key])
             }

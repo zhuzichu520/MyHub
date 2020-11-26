@@ -28,7 +28,7 @@ class ActivityMain : ActivityBase() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         val extras = intent?.extras ?: return
-        val arg = extras.getParcelable<ArgMain>(Mvvm.KEY_ARG) ?: return
+        val arg = extras.getSerializable(Mvvm.KEY_ARG) as? ArgMain ?: return
         when (arg.mainType) {
             EnumMainType.LOGOUT -> {
                 AppStorage.token = null

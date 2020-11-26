@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hiwitech.android.libs.tool.toCast
-import com.hiwitech.android.mvvm.base.ArgDefault
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.widget.tab.QMUITabBuilder
 import com.zhuzichu.android.main.R
@@ -18,7 +17,6 @@ import com.zhuzichu.android.shared.entity.arg.ArgMain
 import com.zhuzichu.android.shared.ext.toDrawableByResId
 import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_main.*
 
 @Route(path = RoutePath.Main.FRAGMENT_MAIN_MAIN)
 class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgMain>() {
@@ -36,13 +34,13 @@ class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgMain>()
                 .navigation().toCast()
         )
         initTabs()
-        pager.offscreenPageLimit = fragments.size
-        pager.adapter = DefaultIntFragmentPagerAdapter(parentFragmentManager, fragments)
-        tabs.setupWithViewPager(pager, false)
+        binding.pager.offscreenPageLimit = fragments.size
+        binding.pager.adapter = DefaultIntFragmentPagerAdapter(parentFragmentManager, fragments)
+        binding.tabs.setupWithViewPager(binding.pager, false)
     }
 
     private fun initTabs() {
-        val builder: QMUITabBuilder = tabs.tabBuilder()
+        val builder: QMUITabBuilder = binding.tabs.tabBuilder()
         builder.setTypeface(null, Typeface.DEFAULT_BOLD)
         builder.setSelectedIconScale(1.2f)
             .setTextSize(
@@ -60,7 +58,7 @@ class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgMain>()
             .setSelectedDrawable(R.drawable.ic_main_me.toDrawableByResId())
             .setText(R.string.me.toStringByResId())
             .build(context)
-        tabs.addTab(demo)
+        binding.tabs.addTab(demo)
             .addTab(home)
     }
 }

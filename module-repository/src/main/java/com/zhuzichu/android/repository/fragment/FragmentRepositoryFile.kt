@@ -8,7 +8,6 @@ import com.zhuzichu.android.repository.viewmodel.ItemViewModelRepositoryTab
 import com.zhuzichu.android.repository.viewmodel.ViewModelRepositoryFile
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
-import kotlinx.android.synthetic.main.fragment_repository_file.*
 
 /**
  * desc
@@ -35,7 +34,7 @@ class FragmentRepositoryFile :
         super.initViewObservable()
         viewModel.onTabAddEvent.observe(viewLifecycleOwner) {
             MainHandler.postDelayed {
-                tab.smoothScrollToPosition(viewModel.itemsTab.size - 1)
+                binding.tab.smoothScrollToPosition(viewModel.itemsTab.size - 1)
             }
         }
     }

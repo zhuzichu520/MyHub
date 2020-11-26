@@ -10,7 +10,6 @@ import com.zhuzichu.android.search.viewmodel.ShareViewModel
 import com.zhuzichu.android.search.viewmodel.ViewModelSearchRepositories
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
-import kotlinx.android.synthetic.main.fragment_search_repositories.*
 
 /**
  * desc
@@ -31,12 +30,12 @@ class FragmentSearchRepositoriess :
         super.initView()
         val scrollBar = QMUIRVDraggableScrollBar(0, 0, 0)
         scrollBar.isEnableScrollBarFadeInOut = true
-        scrollBar.attachToRecyclerView(recycler)
+        scrollBar.attachToRecyclerView(binding.recycler)
     }
 
     override fun initArgs(arg: ArgSearch) {
         super.initArgs(arg)
-        viewModel.share=share
+        viewModel.share = share
     }
 
     override fun initLazyData() {
@@ -56,17 +55,17 @@ class FragmentSearchRepositoriess :
 
     override fun initListener() {
         super.initListener()
-        content.setActionListener { action ->
+        binding.content.setActionListener { action ->
             when (action.pullEdge) {
                 QMUIPullLayout.PULL_EDGE_TOP -> {
                     viewModel.page = 1
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
                 QMUIPullLayout.PULL_EDGE_BOTTOM -> {
                     viewModel.loadData {
-                        content.finishActionRun(action)
+                        binding.content.finishActionRun(action)
                     }
                 }
             }

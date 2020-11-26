@@ -24,7 +24,6 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
 import com.zhuzichu.android.shared.ext.setArg
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_search_result.*
 
 /**
  * desc
@@ -34,7 +33,8 @@ import kotlinx.android.synthetic.main.fragment_search_result.*
  */
 
 @Route(path = RoutePath.Search.FRAGMENT_SEARCH_RESULT)
-class FragmentSearchResult : FragmentBase<FragmentSearchResultBinding, ViewModelSearchResult, ArgSearch>() {
+class FragmentSearchResult :
+    FragmentBase<FragmentSearchResultBinding, ViewModelSearchResult, ArgSearch>() {
 
     override fun bindVariableId(): Int = BR.viewModel
 
@@ -56,11 +56,11 @@ class FragmentSearchResult : FragmentBase<FragmentSearchResultBinding, ViewModel
     }
 
     private fun initTabAndViewPager() {
-        val builder = tab.tabBuilder()
+        val builder = binding.tab.tabBuilder()
         repeat(titles.size) {
-            tab.addTab(builder.build(context))
+            binding.tab.addTab(builder.build(context))
         }
-        content.adapter = DefaultIntFragmentPagerAdapter(
+        binding.content.adapter = DefaultIntFragmentPagerAdapter(
             childFragmentManager,
             titles = titles,
             list = listOf(
@@ -68,12 +68,12 @@ class FragmentSearchResult : FragmentBase<FragmentSearchResultBinding, ViewModel
                 FragmentSearchUsers().setArg(arg)
             )
         )
-        tab.setupWithViewPager(content, true)
+        binding.tab.setupWithViewPager(binding.content, true)
     }
 
     override fun initListener() {
         super.initListener()
-        content.pageSelections().subscribe {
+        binding.content.pageSelections().subscribe {
             share.position.value = it
         }
     }
@@ -83,11 +83,11 @@ class FragmentSearchResult : FragmentBase<FragmentSearchResultBinding, ViewModel
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
-        topbar.addRightImageButton(R.drawable.ic_topbar_menu, R.id.topbar_right_menu_button)
+        binding.topbar.addRightImageButton(R.drawable.ic_topbar_menu, R.id.topbar_right_menu_button)
             .setOnClickListener {
                 showPopup(it)
             }
@@ -97,7 +97,7 @@ class FragmentSearchResult : FragmentBase<FragmentSearchResultBinding, ViewModel
         super.initViewObservable()
         share.position.observe(viewLifecycleOwner) {
             val searchMode = share.getSearchMode() ?: return@observe
-            topbar.setSubTitle(searchMode.textId)
+            binding.topbar.setSubTitle(searchMode.textId)
         }
     }
 

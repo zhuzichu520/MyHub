@@ -23,8 +23,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
-        maven { url = uri("https://dl.bintray.com/umsdk/release") }
+        maven("https://jitpack.io")
+        maven("https://dl.bintray.com/umsdk/release")
     }
 }
 

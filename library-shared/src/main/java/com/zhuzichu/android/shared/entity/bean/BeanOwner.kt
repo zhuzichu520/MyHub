@@ -2,9 +2,8 @@ package com.zhuzichu.android.shared.entity.bean
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class BeanOwner(
     @SerializedName("login")
     var login: String? = null,
@@ -42,4 +41,4 @@ data class BeanOwner(
     var type: String? = null,
     @SerializedName("site_admin")
     var siteAdmin: Boolean? = null
-) : Parcelable
+) : Serializable

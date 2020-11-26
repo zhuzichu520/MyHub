@@ -12,7 +12,6 @@ import com.zhuzichu.android.search.databinding.FragmentSearchBinding
 import com.zhuzichu.android.search.viewmodel.ViewModelSearch
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_search.*
 
 @Route(path = RoutePath.Search.FRAGMENT_SEARCH_MAIN)
 class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgDefault>() {
@@ -29,7 +28,7 @@ class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgD
     }
 
     private fun initRecyclerView() {
-        recycler.layoutManager = FlexboxLayoutManager(context).apply {
+        binding.recycler.layoutManager = FlexboxLayoutManager(context).apply {
             justifyContent = JustifyContent.FLEX_START
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
@@ -37,7 +36,7 @@ class FragmentSearch : FragmentBase<FragmentSearchBinding, ViewModelSearch, ArgD
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }

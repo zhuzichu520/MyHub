@@ -12,7 +12,6 @@ import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.ext.setArg
 import com.zhuzichu.android.shared.route.RoutePath
-import kotlinx.android.synthetic.main.fragment_repository.*
 
 @Route(path = RoutePath.Repository.FRAGMENT_REPOSITORY_MAIN)
 class FragmentRepository :
@@ -48,11 +47,11 @@ class FragmentRepository :
     }
 
     private fun initTabAndViewPager() {
-        val builder = tab.tabBuilder()
+        val builder = binding.tab.tabBuilder()
         repeat(titles.size) {
-            tab.addTab(builder.build(context))
+            binding.tab.addTab(builder.build(context))
         }
-        content.adapter = DefaultIntFragmentPagerAdapter(
+        binding.content.adapter = DefaultIntFragmentPagerAdapter(
             childFragmentManager,
             titles = titles,
             list = listOf(
@@ -62,11 +61,11 @@ class FragmentRepository :
                 FragmentRepositoryActivity().setArg(arg)
             )
         )
-        tab.setupWithViewPager(content, true)
+        binding.tab.setupWithViewPager(binding.content, true)
     }
 
     private fun initTopBar() {
-        topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
+        binding.topbar.addLeftImageButton(R.drawable.ic_topbar_back, R.id.topbar_left_back_button)
             .setOnClickListener {
                 back()
             }
