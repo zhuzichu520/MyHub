@@ -13,14 +13,6 @@ import java.util.concurrent.TimeUnit
  * time: 2020/9/15 4:29 PM
  * since: v 1.0.0
  */
-@BindingAdapter(value = ["onClickCommand", "isThrottleFirst"], requireAll = false)
-fun onClickCommand(view: View, clickCommand: BindingCommand<*>?, isThrottleFirst: Boolean?) {
-    clickCommand?.apply {
-        view.clicks().isThrottleFirst(isThrottleFirst ?: true).subscribe {
-            execute()
-        }
-    }
-}
 
 private fun <T> Observable<T>.isThrottleFirst(
     isThrottleFirst: Boolean
@@ -30,6 +22,37 @@ private fun <T> Observable<T>.isThrottleFirst(
             it.throttleFirst(150L, TimeUnit.MILLISECONDS)
         } else {
             it
+        }
+    }
+}
+
+@BindingAdapter(value = ["onClickCommand", "isThrottleFirst"], requireAll = false)
+fun onClickCommand(view: View, clickCommand: BindingCommand<*>?, isThrottleFirst: Boolean?) {
+    clickCommand?.apply {
+        view.clicks().isThrottleFirst(isThrottleFirst ?: true).subscribe {
+            execute()
+        }
+    }
+}
+
+/**
+ * 设置控件Click监听事件
+ *
+ * @param onClickListener 监听实例
+ * @param views           视图集合
+ */
+fun setOnClickDoubleListener(
+    onClickListener: View.OnClickListener?,
+    vararg views: View?,
+    isThrottleFirst: Boolean? = null
+) {
+    if (views.isNotEmpty() && onClickListener != null) {
+        for (view in views) {
+            view?.let { v ->
+                v.clicks().isThrottleFirst(isThrottleFirst ?: true).subscribe {
+                    onClickListener.onClick(v)
+                }
+            }
         }
     }
 }
