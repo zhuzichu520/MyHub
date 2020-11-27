@@ -1,5 +1,9 @@
+@file:Suppress("DEPRECATION")
+
 package com.zhuzichu.android.repository.fragment
 
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.activityViewModels
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhuzichu.android.repository.BR
@@ -7,10 +11,10 @@ import com.zhuzichu.android.repository.R
 import com.zhuzichu.android.repository.databinding.FragmentRepositoryBinding
 import com.zhuzichu.android.repository.viewmodel.ShareViewModel
 import com.zhuzichu.android.repository.viewmodel.ViewModelRepository
-import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgRepository
 import com.zhuzichu.android.shared.ext.setArg
+import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.shared.route.RoutePath
 
 @Route(path = RoutePath.Repository.FRAGMENT_REPOSITORY_MAIN)
@@ -43,25 +47,34 @@ class FragmentRepository :
 
     override fun initVariable() {
         super.initVariable()
-        binding?.setVariable(BR.share, share)
+        binding.setVariable(BR.share, share)
     }
 
     private fun initTabAndViewPager() {
+
         val builder = binding.tab.tabBuilder()
+
         repeat(titles.size) {
             binding.tab.addTab(builder.build(context))
         }
-        binding.content.adapter = DefaultIntFragmentPagerAdapter(
-            childFragmentManager,
-            titles = titles,
-            list = listOf(
-                FragmentRepositoryInfo().setArg(arg),
-                FragmentRepositoryFile().setArg(arg),
-                FragmentRepositoryCommit().setArg(arg),
-                FragmentRepositoryActivity().setArg(arg)
-            )
+
+        val list = listOf(
+            FragmentRepositoryInfo().setArg(arg),
+            FragmentRepositoryFile().setArg(arg),
+            FragmentRepositoryCommit().setArg(arg),
+            FragmentRepositoryActivity().setArg(arg)
         )
+
+        binding.content.adapter = object :
+            FragmentPagerAdapter(parentFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            override fun getCount(): Int = list.size
+            override fun getItem(position: Int): Fragment = list[position]
+            override fun getPageTitle(position: Int): CharSequence =
+                titles[position].toStringByResId()
+        }
+
         binding.tab.setupWithViewPager(binding.content, true)
+
     }
 
     private fun initTopBar() {

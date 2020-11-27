@@ -67,15 +67,14 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
-
     sourceSets {
         sourceSets["main"].apply {
             java.srcDir("src/main/kotlin")
         }
     }
+
+    buildFeatures.dataBinding = true
+
 }
 
 dependencies {

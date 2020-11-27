@@ -1,10 +1,9 @@
 package com.zhuzichu.android.main.fragment
 
 import android.graphics.Typeface
-import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.hiwitech.android.libs.tool.toCast
 import com.qmuiteam.qmui.util.QMUIDisplayHelper
 import com.qmuiteam.qmui.widget.tab.QMUITabBuilder
 import com.zhuzichu.android.main.R
@@ -27,15 +26,13 @@ class FragmentMain : FragmentBase<FragmentMainBinding, ViewModelMain, ArgMain>()
 
     override fun initView() {
         super.initView()
-        val fragments = listOf<Fragment>(
-            ARouter.getInstance().build(RoutePath.Home.FRAGMENT_HOME_MAIN)
-                .navigation().toCast(),
+        val postcards = listOf<Postcard>(
+            ARouter.getInstance().build(RoutePath.Home.FRAGMENT_HOME_MAIN),
             ARouter.getInstance().build(RoutePath.Me.FRAGMENT_ME_MAIN)
-                .navigation().toCast()
         )
         initTabs()
-        binding.pager.offscreenPageLimit = fragments.size
-        binding.pager.adapter = DefaultIntFragmentPagerAdapter(parentFragmentManager, fragments)
+        binding.pager.offscreenPageLimit = postcards.size
+        binding.pager.adapter = DefaultIntFragmentPagerAdapter(parentFragmentManager, postcards)
         binding.tabs.setupWithViewPager(binding.pager, false)
     }
 

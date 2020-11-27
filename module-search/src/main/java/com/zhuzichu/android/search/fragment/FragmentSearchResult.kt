@@ -1,7 +1,11 @@
+@file:Suppress("DEPRECATION")
+
 package com.zhuzichu.android.search.fragment
 
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,10 +23,10 @@ import com.zhuzichu.android.search.R
 import com.zhuzichu.android.search.databinding.FragmentSearchResultBinding
 import com.zhuzichu.android.search.viewmodel.ShareViewModel
 import com.zhuzichu.android.search.viewmodel.ViewModelSearchResult
-import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentBase
 import com.zhuzichu.android.shared.entity.arg.ArgSearch
 import com.zhuzichu.android.shared.ext.setArg
+import com.zhuzichu.android.shared.ext.toStringByResId
 import com.zhuzichu.android.shared.route.RoutePath
 
 /**
@@ -60,14 +64,20 @@ class FragmentSearchResult :
         repeat(titles.size) {
             binding.tab.addTab(builder.build(context))
         }
-        binding.content.adapter = DefaultIntFragmentPagerAdapter(
-            childFragmentManager,
-            titles = titles,
-            list = listOf(
-                FragmentSearchRepositoriess().setArg(arg),
-                FragmentSearchUsers().setArg(arg)
-            )
+
+        val list = listOf(
+            FragmentSearchRepositoriess().setArg(arg),
+            FragmentSearchUsers().setArg(arg)
         )
+
+        binding.content.adapter = object :
+            FragmentPagerAdapter(parentFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            override fun getCount(): Int = list.size
+            override fun getItem(position: Int): Fragment = list[position]
+            override fun getPageTitle(position: Int): CharSequence =
+                titles[position].toStringByResId()
+        }
+
         binding.tab.setupWithViewPager(binding.content, true)
     }
 
